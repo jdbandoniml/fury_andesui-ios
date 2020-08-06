@@ -6,16 +6,14 @@
 //
 
 import UIKit
-import PureLayout
-import MLUI
 
 public class AndesCoachMarkView: UIView {
     let overlayLayer = CAShapeLayer()
     let maskLayer = CAShapeLayer()
-    
-    public weak var delegate: CECoachMarkViewDelegate?
+
+    public weak var delegate: AndesCoachMarkViewDelegate?
     public let overlayColor: UIColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.80)
-    
+
     var highlightedView: AndesCoachMarkHighlightedView?
 
     lazy var navBar: AndesCoachMarkNavBarView = {
@@ -32,9 +30,9 @@ public class AndesCoachMarkView: UIView {
     }()
     var body: AndesCoachMarkBodyView?
     var presenter: AndesCoachMarkPresenter
-    
+
     var mustStart = false
-    
+
     var animated: Bool {
         get {
             return self.presenter.animated
@@ -44,78 +42,83 @@ public class AndesCoachMarkView: UIView {
     // MARK: - Initialization
     public init(model: AndesCoachMarkEntity) {
         self.presenter = AndesCoachMarkPresenter(model: model)
-        
+
         super.init(frame: CGRect.zero)
-        
-        //TODO: Llevar a presenter, getCurrentWindows
-        guard let window = presenter.getWindow() else { return }
-        window.addSubview(self)
-        
+
         setupViews()
         setupOverlayLayer()
         layoutIfNeeded()
     }
-    
+
     private func setupViews() {
         alpha = 0.0
         presenter.view = self
-        configureForAutoLayout()
-        autoPinEdgesToSuperviewEdges(with: .zero, excludingEdge: .top)
-        
-        //TODO: LLevar a presenter, getStatusBarHeight
-        let height = UIApplication.shared.statusBarFrame.size.height
-        autoPinEdge(toSuperviewEdge: .top, withInset: height)
-        
+        translatesAutoresizingMaskIntoConstraints = false
+
+        guard let window = presenter.getWindow() else { return }
+
+        window.addSubview(self)
+        NSLayoutConstraint.activate([
+            leadingAnchor.constraint(equalTo: window.leadingAnchor),
+            trailingAnchor.constraint(equalTo: window.trailingAnchor),
+            bottomAnchor.constraint(equalTo: window.bottomAnchor),
+            topAnchor.constraint(equalTo: window.topAnchor, constant: presenter.getStatusBarHeight())
+        ])
+
         addSubview(navBar)
-        navBar.autoPinEdge(toSuperviewEdge: .top)
-        navBar.autoPinEdge(toSuperviewEdge: .leading)
-        navBar.autoPinEdge(toSuperviewEdge: .trailing)
-        
+        NSLayoutConstraint.activate([
+            navBar.leadingAnchor.constraint(equalTo: leadingAnchor),
+            navBar.trailingAnchor.constraint(equalTo: trailingAnchor),
+            navBar.topAnchor.constraint(equalTo: topAnchor)
+        ])
+
         addSubview(footer)
-        footer.autoPinEdge(toSuperviewEdge: .bottom)
-        footer.autoPinEdge(toSuperviewEdge: .leading)
-        footer.autoPinEdge(toSuperviewEdge: .trailing)
+        NSLayoutConstraint.activate([
+            footer.leadingAnchor.constraint(equalTo: leadingAnchor),
+            footer.trailingAnchor.constraint(equalTo: trailingAnchor),
+            footer.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
-    
+
     private func setupOverlayLayer() {
         overlayLayer.backgroundColor = self.overlayColor.cgColor
         overlayLayer.frame = UIScreen.main.bounds
-        
+
         maskLayer.frame = overlayLayer.bounds
         maskLayer.fillColor = UIColor.black.cgColor
         maskLayer.fillRule = .evenOdd
         overlayLayer.mask = maskLayer
         layer.addSublayer(overlayLayer)
     }
-    
+
     required public init?(coder aDecoder: NSCoder) {
         fatalError("This class does not support NSCoding")
     }
-    
+
     public func start() {
         mustStart = true
         setNeedsLayout()
     }
-    
+
     public override func layoutSubviews() {
         super.layoutSubviews()
         if mustStart {
             mustStart = false
             presenter.start()
         }
-        
+
     }
 
 }
 
-//MARK: - Actions from  NavBar
+// MARK: - Actions from  NavBar
 extension AndesCoachMarkView: AndesCoachMarkNavBarViewDelegate {
     func didClose() {
         presenter.didCloseButtonTap()
     }
 }
 
-//MARK: - Actions from Footer
+// MARK: - Actions from Footer
 extension AndesCoachMarkView: AndesCoachMarkFooterViewDelegate {
     func didNext() {
         presenter.didNextActionTap()

@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import MLUI
-import PureLayout
 
 protocol AndesCoachMarkNavBarViewDelegate: class {
     func didClose()
@@ -21,53 +19,59 @@ class AndesCoachMarkNavBarView: UIView {
         }
     }
     private lazy var closeButton = UIButton(type: .system)
-    private lazy var titleLabel = UILabel(forAutoLayout: ())
-    
+    private lazy var titleLabel = UILabel()
+
     weak var delegate: AndesCoachMarkNavBarViewDelegate?
-    
-    
+
     // MARK: - Initialization
     required init() {
         super.init(frame: .zero)
-        
+
         setupViews()
     }
-    
+
     private func setupViews() {
-        configureForAutoLayout()
-        autoSetDimension(.height, toSize: 64)
-        
+        translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        heightAnchor.constraint(equalToConstant: 64).isActive = true
+
         setupCloseButton()
         setupTitle()
     }
-    
+
     private func setupCloseButton() {
         closeButton.addTarget(self, action: #selector(closeButtonTouchUpInside(_:with:)), for: .touchUpInside)
-        closeButton.setImage(CEBundle.imageNamed(ImageNameConstants.close), for: .normal)
-        closeButton.tintColor = MLStyleSheetManager.styleSheet.whiteColor
-        
-        closeButton.configureForAutoLayout()
+        closeButton.setImage(AndesBundle.imageNamed(ImageNameConstants.close), for: .normal)
+        closeButton.tintColor = AndesStyleSheetManager.styleSheet.textColorWhite
+
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
         addSubview(closeButton)
-        closeButton.autoSetDimensions(to: CGSize(width: 16, height: 16))
-        closeButton.autoAlignAxis(toSuperviewAxis: .horizontal)
-        closeButton.autoPinEdge(toSuperviewEdge: .trailing, withInset: 24)
+        NSLayoutConstraint.activate([
+            closeButton.heightAnchor.constraint(equalToConstant: 16),
+            closeButton.widthAnchor.constraint(equalToConstant: 16),
+            closeButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24)
+        ])
+
     }
-    
+
     private func setupTitle() {
-        titleLabel.addLineHeight(18)
-        titleLabel.font = UIFont.ml_regularSystemFont(ofSize: CGFloat(kMLFontsSizeXSmall))
-        titleLabel.textColor = MLStyleSheetManager.styleSheet.whiteColor
-        
+        titleLabel.setAndesStyle(style: AndesFontStyle(textColor: AndesStyleSheetManager.styleSheet.textColorWhite, font: AndesStyleSheetManager.styleSheet.regularSystemFont(size: AndesFontSize.bodyM), sketchLineHeight: 18))
+
         addSubview(titleLabel)
-        titleLabel.autoAlignAxis(toSuperviewAxis: .horizontal)
-        titleLabel.autoPinEdge(toSuperviewEdge: .leading, withInset: 24)
-        titleLabel.autoPinEdge(.trailing, to: .leading, of: closeButton, withOffset: -24, relation: .lessThanOrEqual)
+
+        NSLayoutConstraint.activate([
+            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: closeButton.leadingAnchor, constant: -24)
+        ])
+
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("This class does not support NSCoding")
     }
-    
+
     @objc private func closeButtonTouchUpInside(_ sender: UIControl, with event: UIEvent?) {
         delegate?.didClose()
     }

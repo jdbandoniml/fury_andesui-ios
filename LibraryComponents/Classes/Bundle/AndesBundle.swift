@@ -15,4 +15,8 @@ public class AndesBundle {
         }
         return Bundle.main
     }
+
+    internal static func imageNamed(_ name: String) -> UIImage? {
+        return UIImage.init(named: name, in: bundle(), compatibleWith: nil)
+    }
 }

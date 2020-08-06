@@ -5,26 +5,21 @@
 //  Created by JONATHAN DANIEL BANDONI on 17/07/2020.
 //
 
-import Foundation
-import MLUI
-import AndesUI
-import PureLayout
-
 class AndesCoachMarkArrowView: UIView {
-    
+
     private lazy var arrowHeight: CGFloat = 2 * AndesCoachMarkConstants.Arrow.radius + 1
     private let arrowWidth: CGFloat
     private let direction: Direction
-    
+
     private(set) var shapeLayer = CAShapeLayer()
     private(set) var headLayer = CAShapeLayer()
-    
+
     // MARK: - Initialization
     required init(width: CGFloat, direction: Direction) {
         self.arrowWidth = width
         self.direction = direction
         super.init(frame: .zero)
-        
+
         shapeLayer.frame = CGRect(x: 0, y: 0, width: arrowWidth, height: arrowHeight)
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.strokeColor = UIColor.white.cgColor
@@ -37,13 +32,13 @@ class AndesCoachMarkArrowView: UIView {
         layer.insertSublayer(headLayer, above: shapeLayer)
         setupViews()
     }
-    
+
     private func setupViews() {
-        configureForAutoLayout()
-        
+        translatesAutoresizingMaskIntoConstraints = false
+
         setNeedsDisplay()
     }
-    
+
     private func setupHead() -> CGPath {
         let path = UIBezierPath()
         let reference = CGPoint(x: AndesCoachMarkConstants.Arrow.headWidth, y: 0)
@@ -53,7 +48,7 @@ class AndesCoachMarkArrowView: UIView {
         path.addLine(to: CGPoint(x: reference.x + AndesCoachMarkConstants.Arrow.headWidth, y: AndesCoachMarkConstants.Arrow.headHeight))
         return path.cgPath
     }
-    
+
     private func toUpLeftArrow() -> CGPath {
         let path = UIBezierPath()
         path.addArc(withCenter: CGPoint(x: arrowWidth - AndesCoachMarkConstants.Arrow.radius, y: arrowHeight), radius: AndesCoachMarkConstants.Arrow.radius, startAngle: 0, endAngle: -.pi/2, clockwise: false)
@@ -63,7 +58,7 @@ class AndesCoachMarkArrowView: UIView {
         headLayer.transform = CATransform3DConcat(rotate, translate)
         return path.cgPath
     }
-    
+
     private func toUpRightArrow() -> CGPath {
         let path = UIBezierPath()
         path.addArc(withCenter: CGPoint(x: AndesCoachMarkConstants.Arrow.radius, y: arrowHeight), radius: AndesCoachMarkConstants.Arrow.radius, startAngle: .pi, endAngle: -.pi/2, clockwise: true)
@@ -73,7 +68,7 @@ class AndesCoachMarkArrowView: UIView {
         headLayer.transform = CATransform3DConcat(rotate, translate)
         return path.cgPath
     }
-    
+
     private func toDownLeftArrow() -> CGPath {
         let path = UIBezierPath()
         path.addArc(withCenter: CGPoint(x: arrowWidth - AndesCoachMarkConstants.Arrow.radius, y: 0), radius: AndesCoachMarkConstants.Arrow.radius, startAngle: 0, endAngle: .pi/2, clockwise: true)
@@ -83,7 +78,7 @@ class AndesCoachMarkArrowView: UIView {
         headLayer.transform = CATransform3DConcat(rotate, translate)
         return path.cgPath
     }
-    
+
     private func toDownRightArrow() -> CGPath {
         let path = UIBezierPath()
         path.addArc(withCenter: CGPoint(x: AndesCoachMarkConstants.Arrow.radius, y: 0), radius: AndesCoachMarkConstants.Arrow.radius, startAngle: .pi, endAngle: .pi/2, clockwise: false)
@@ -93,10 +88,10 @@ class AndesCoachMarkArrowView: UIView {
         headLayer.transform = CATransform3DConcat(rotate, translate)
         return path.cgPath
     }
-    
+
     override func draw(_ rect: CGRect) {
         headLayer.path = setupHead()
-        
+
         switch direction {
         case .toDownLeft:
             shapeLayer.path = toDownLeftArrow()
@@ -108,27 +103,26 @@ class AndesCoachMarkArrowView: UIView {
             shapeLayer.path = toUpRightArrow()
         }
     }
-     
+
     override var intrinsicContentSize: CGSize {
         return CGSize(width: arrowWidth, height: arrowHeight)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("This class does not support NSCoding")
     }
 
 }
 
-extension AndesCoachMarkArrowView{
+extension AndesCoachMarkArrowView {
     enum Direction {
         case toUpLeft
         case toUpRight
         case toDownLeft
         case toDownRight
     }
-    
+
     static func getMinWidth() -> CGFloat {
         return AndesCoachMarkConstants.Arrow.radius * 2 + AndesCoachMarkConstants.Arrow.headWidth
     }
 }
-

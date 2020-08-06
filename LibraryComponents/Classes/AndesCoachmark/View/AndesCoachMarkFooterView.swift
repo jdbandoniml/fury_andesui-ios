@@ -6,9 +6,6 @@
 //
 
 import Foundation
-import MLUI
-import AndesUI
-import PureLayout
 
 protocol AndesCoachMarkFooterViewDelegate: class {
     func didNext()
@@ -22,36 +19,40 @@ class AndesCoachMarkFooterView: UIView {
         }
     }
     private lazy var nextButton = AndesButton(text: "", hierarchy: .loud, size: .large)
-    
+
     weak var delegate: AndesCoachMarkFooterViewDelegate?
-    
-    
+
     // MARK: - Initialization
     required init() {
         super.init(frame: .zero)
-        
+
         setupViews()
     }
-    
+
     private func setupViews() {
-        configureForAutoLayout()
-        autoSetDimension(.height, toSize: 96)
-        
+        translatesAutoresizingMaskIntoConstraints = false
+        heightAnchor.constraint(equalToConstant: 96).isActive = true
+
         setupNextButton()
     }
-    
+
     private func setupNextButton() {
         nextButton.addTarget(self, action: #selector(nextButtonTouchUpInside), for: .touchUpInside)
-        
-        nextButton.configureForAutoLayout()
+
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
         addSubview(nextButton)
-        nextButton.autoPinEdgesToSuperviewEdges(with: UIEdgeInsets(top: 32, left: 24, bottom: 16, right: 24))
+        NSLayoutConstraint.activate([
+            nextButton.topAnchor.constraint(equalTo: topAnchor, constant: 32),
+            nextButton.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 24),
+            nextButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            nextButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
+        ])
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("This class does not support NSCoding")
     }
-    
+
     @objc private func nextButtonTouchUpInside(_ sender: UIControl, with event: UIEvent?) {
         delegate?.didNext()
     }
