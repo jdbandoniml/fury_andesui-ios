@@ -13,7 +13,7 @@ protocol CoachmarkRouter: NSObject {
 }
 
 class CoachmarkAppRouter: NSObject {
-    var view: ButtonsViewController!
+    var view: CoachmarkViewController!
 }
 
 extension CoachmarkAppRouter: CoachmarkRouter {

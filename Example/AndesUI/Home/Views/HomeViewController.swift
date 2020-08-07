@@ -17,6 +17,7 @@ protocol HomeView: NSObject {
 class HomeViewController: UIViewController {
 
     weak var presenter: HomePresenter!
+    @IBOutlet weak var coachmarkBtn: AndesButton!
     @IBOutlet weak var button: AndesButton!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var messagesBtn: AndesButton!
@@ -63,6 +64,10 @@ class HomeViewController: UIViewController {
         setupButtons()
         setupNavigation()
         setupMessage()
+    }
+
+    @IBAction func goToCoachmarkWasTapped(_ sender: Any) {
+        presenter.presentCoachmark()
     }
 
     @IBAction func goToButtonWasTapped(_ sender: Any) {

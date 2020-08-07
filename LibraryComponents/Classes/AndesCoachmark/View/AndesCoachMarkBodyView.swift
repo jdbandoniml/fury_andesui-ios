@@ -52,7 +52,7 @@ class AndesCoachMarkBodyView: UIView {
 
     private func setupLabelsContainer() {
         addSubview(labelsContainer)
-        labelsContainer.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        labelsContainer.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         labelsContainer.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
     }
 
@@ -129,7 +129,7 @@ extension AndesCoachMarkBodyView: AndesCoachMarkBodyViewProtocol {
         guard let arrowView = arrowView else { return }
 
         addSubview(arrowView)
-        arrowView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: y - animationDY).isActive = true
+        arrowView.bottomAnchor.constraint(equalTo: topAnchor, constant: y - animationDY).isActive = true
         arrowView.trailingAnchor.constraint(equalTo: labelsContainer.centerXAnchor).isActive = true
 
         labelsContainer.bottomAnchor.constraint(equalTo: arrowView.topAnchor).isActive = true
@@ -156,7 +156,7 @@ extension AndesCoachMarkBodyView: AndesCoachMarkBodyViewProtocol {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: labelsContainer.topAnchor, constant: 8),
             titleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: labelsContainer.leadingAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: labelsContainer.centerYAnchor)
+            titleLabel.centerXAnchor.constraint(equalTo: labelsContainer.centerXAnchor)
         ])
         titleLabel.sizeToFit()
     }
@@ -171,7 +171,7 @@ extension AndesCoachMarkBodyView: AndesCoachMarkBodyViewProtocol {
         NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
             descriptionLabel.leadingAnchor.constraint(greaterThanOrEqualTo: labelsContainer.leadingAnchor),
-            descriptionLabel.centerYAnchor.constraint(equalTo: labelsContainer.centerYAnchor),
+            descriptionLabel.centerXAnchor.constraint(equalTo: labelsContainer.centerXAnchor),
             descriptionLabel.bottomAnchor.constraint(equalTo: labelsContainer.bottomAnchor, constant: -8)
         ])
         descriptionLabel.sizeToFit()

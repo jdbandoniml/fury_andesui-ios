@@ -47,7 +47,7 @@ class AndesCoachMarkPresenter {
                 highlightInteractor = nil
                 return
         }
-        highlightInteractor = AndesCoachMarkHighlightInteractor(overlayView: overlayView, view: highlighted.view, bodyView: bodyView, style: highlighted.style)
+        highlightInteractor = AndesCoachMarkHighlightInteractor(overlayView: overlayView, view: highlighted.view, bodyViewBounds: bodyView.convert(bodyView.bounds, to: overlayView), style: highlighted.style)
 
     }
 
@@ -73,6 +73,7 @@ class AndesCoachMarkPresenter {
     private func prepare() {
         guard let view = view, let currentStep = currentStep else { return }
 
+        createHighlightInteractor()
         let bodyPosition: AndesCoachMarkBodyEntity.Position = highlightInteractor?.isHighlightedViewBelow() ?? true ? .above : .below
 
         view.setNavBar("\(currentIndex+1) de \(model.steps.count)")
@@ -139,8 +140,9 @@ class AndesCoachMarkPresenter {
     func start() {
         if currentIndex != -1 { return }
 
-        createHighlightInteractor()
-        showNext()
+        currentIndex = 0
+        setBody(.above, removePrevious: true)
+        prepare()
     }
 
     func getWindow() -> UIWindow? {

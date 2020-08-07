@@ -13,7 +13,6 @@
                 <outlet property="centerView" destination="FB3-Vv-r3T" id="lg2-5B-3x0"/>
                 <outlet property="downLeftView" destination="Sfy-SW-YCG" id="GWX-eZ-HNi"/>
                 <outlet property="downRightView" destination="uvP-sb-RYh" id="uTt-dp-kLr"/>
-                <outlet property="eee" destination="9BI-Q0-6Nn" id="30W-Ma-SWz"/>
                 <outlet property="leftCenterView" destination="QGQ-CN-8R5" id="o2e-SN-fHi"/>
                 <outlet property="leftView" destination="9BI-Q0-6Nn" id="iAi-pU-Qo7"/>
                 <outlet property="rightCenterView" destination="Ulw-Ze-NXp" id="IZu-1z-2UE"/>

@@ -43,7 +43,7 @@ class AndesCoachMarkFooterView: UIView {
         addSubview(nextButton)
         NSLayoutConstraint.activate([
             nextButton.topAnchor.constraint(equalTo: topAnchor, constant: 32),
-            nextButton.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 24),
+            nextButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             nextButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             nextButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
         ])

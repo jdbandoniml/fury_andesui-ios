@@ -49,7 +49,7 @@ class AndesCoachMarkNavBarView: UIView {
         NSLayoutConstraint.activate([
             closeButton.heightAnchor.constraint(equalToConstant: 16),
             closeButton.widthAnchor.constraint(equalToConstant: 16),
-            closeButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            closeButton.centerYAnchor.constraint(equalTo: centerYAnchor),
             closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24)
         ])
 
@@ -61,7 +61,7 @@ class AndesCoachMarkNavBarView: UIView {
         addSubview(titleLabel)
 
         NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: closeButton.leadingAnchor, constant: -24)
         ])
