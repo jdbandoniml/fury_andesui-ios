@@ -28,6 +28,7 @@ class CoachmarkViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupViews()
         setupCoachmark()
     }
 
@@ -38,6 +39,10 @@ class CoachmarkViewController: UIViewController {
             self?.coachmark?.start()
         }
 
+    }
+
+    private func setupViews() {
+        centerView.layer.cornerRadius = centerView.bounds.height/2
     }
 
     private func setupCoachmark() {
@@ -53,14 +58,14 @@ class CoachmarkViewController: UIViewController {
 
         let rightStep = AndesCoachMarkStepEntity(highlighted: AndesCoachMarkStepEntity.HighlightedEntity(view: rightView, style: .rectangle), title: "Con scroll", description: "Es necesario performar un scroll para poder señalar la vista.", nextText: "Siguiente")
 
-        let centerStep = AndesCoachMarkStepEntity(highlighted: AndesCoachMarkStepEntity.HighlightedEntity(view: centerView, style: .rectangle), title: "Sin flecha", description: "No se dibuja flecha porque está centrado.", nextText: "Siguiente")
+        let centerStep = AndesCoachMarkStepEntity(highlighted: AndesCoachMarkStepEntity.HighlightedEntity(view: centerView, style: .circle), title: "Sin flecha", description: "No se dibuja flecha porque está centrado.", nextText: "Siguiente")
 
         let leftCenterStep = AndesCoachMarkStepEntity(highlighted: AndesCoachMarkStepEntity.HighlightedEntity(view: leftCenterView, style: .rectangle), title: "Sin flecha, descentrado", description: "No se dibuja flecha porque no está lo suficientemente desplazado a la izquierda.", nextText: "Siguiente")
 
         let rightCenterStep = AndesCoachMarkStepEntity(highlighted: AndesCoachMarkStepEntity.HighlightedEntity(view: rightCenterView, style: .rectangle), title: "Sin flecha, descentrado", description: "No se dibuja flecha porque no está lo suficientemente desplazado a la derecha.", nextText: "Terminar")
 
         let model = AndesCoachMarkEntity(steps: [upLeftStep, upRightStep, downLeftStep, downRightStep, leftStep, rightStep, centerStep, leftCenterStep, rightCenterStep],
-                             scrollView: nil,
+                             scrollView: scrollView,
                              completionHandler: nil)
 
         coachmark = AndesCoachMarkView(model: model)

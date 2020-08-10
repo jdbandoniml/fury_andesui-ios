@@ -82,18 +82,7 @@ class AndesCoachMarkPresenter {
         setBody(bodyPosition, removePrevious: false)
         createScrollInteractor()
 
-        //Above position is only allowed when it doesn't need to scroll. If scrolling is needed, it will try with below position.
-        if bodyPosition == .above {
-            if let scrollInteractor = scrollInteractor, scrollInteractor.isScrollNeeded() {
-                setBody(.below, removePrevious: true)
-                createScrollInteractor()
-            } else {
-                show()
-                return
-            }
-        }
-
-        //If below position needs scroll, it will be performed
+        //If it needs scroll, it will be performed
         //This 'if let' line is here because scrollInteractor is a new instance!
         if let scrollInteractor = scrollInteractor, scrollInteractor.isScrollNeeded() {
             view.removeHighlight()
@@ -103,7 +92,7 @@ class AndesCoachMarkPresenter {
             return
         }
         _ = scrollInteractor?.scrollIfNeeded { [weak self] in
-            self?.setBody(.below, removePrevious: true)
+            self?.setBody(bodyPosition, removePrevious: true)
             self?.show()
         }
 
