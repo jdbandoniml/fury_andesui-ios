@@ -117,13 +117,13 @@ class AndesCoachMarkScrollInteractor {
 
 extension CGRect {
     static func +(lhs: CGRect, rhs: CGRect) -> CGRect {
-        let x = min(lhs.minX, rhs.minX)
-        let y = min(lhs.minY, rhs.minY)
+        let minX = min(lhs.minX, rhs.minX)
+        let minY = min(lhs.minY, rhs.minY)
 
-        return CGRect(x: x,
-                      y: y,
-                      width: abs(max(lhs.maxX, rhs.maxX) - x),
-                      height: abs(max(lhs.maxY, rhs.maxY) - y))
+        return CGRect(x: minX,
+                      y: minY,
+                      width: abs(max(lhs.maxX, rhs.maxX) - minX),
+                      height: abs(max(lhs.maxY, rhs.maxY) - minY))
     }
 
     func isAbove(of rect: CGRect) -> Bool {
