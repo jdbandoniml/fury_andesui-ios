@@ -41,14 +41,16 @@ class AndesCoachMarkNavBarView: UIView {
 
     private func setupCloseButton() {
         closeButton.addTarget(self, action: #selector(closeButtonTouchUpInside(_:with:)), for: .touchUpInside)
-        closeButton.setImage(AndesBundle.imageNamed(ImageNameConstants.close), for: .normal)
-        closeButton.tintColor = AndesStyleSheetManager.styleSheet.textColorWhite
-
+        AndesIconsProvider.loadIcon(name: AndesIcons.close20) { (closeImage) in
+            closeButton.setImage(closeImage, for: .normal)
+            closeButton.tintColor = AndesStyleSheetManager.styleSheet.textColorWhite
+        }
         closeButton.translatesAutoresizingMaskIntoConstraints = false
+
         addSubview(closeButton)
         NSLayoutConstraint.activate([
-            closeButton.heightAnchor.constraint(equalToConstant: 16),
-            closeButton.widthAnchor.constraint(equalToConstant: 16),
+            closeButton.heightAnchor.constraint(equalToConstant: 20),
+            closeButton.widthAnchor.constraint(equalToConstant: 20),
             closeButton.centerYAnchor.constraint(equalTo: centerYAnchor),
             closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24)
         ])
@@ -76,10 +78,4 @@ class AndesCoachMarkNavBarView: UIView {
         delegate?.didClose()
     }
 
-}
-
-private extension AndesCoachMarkNavBarView {
-    enum ImageNameConstants {
-        static let close = "coachmark_close"
-    }
 }
