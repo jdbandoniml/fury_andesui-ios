@@ -42,15 +42,15 @@ class AndesCoachMarkBodyPresenter {
         switch model.position {
         case .below:
             if isRight {
-                view.setupArrowAboveOfTextAndPointToRight(y: rectToPoint.maxY + 28, width: width)
+                view.setupArrowAboveOfTextAndPointToRight(positionY: rectToPoint.maxY + 28, width: width)
             } else {
-                view.setupArrowAboveOfTextAndPointToLeft(y: rectToPoint.maxY + 28, width: width)
+                view.setupArrowAboveOfTextAndPointToLeft(positionY: rectToPoint.maxY + 28, width: width)
             }
         case .above:
             if isRight {
-                view.setupArrowBelowOfTextAndPointToRight(y: rectToPoint.minY - 28, width: width)
+                view.setupArrowBelowOfTextAndPointToRight(positionY: rectToPoint.minY - 28, width: width)
             } else {
-                view.setupArrowBelowOfTextAndPointToLeft(y: rectToPoint.minY - 28, width: width)
+                view.setupArrowBelowOfTextAndPointToLeft(positionY: rectToPoint.minY - 28, width: width)
             }
         case .none:
             break

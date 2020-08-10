@@ -6,12 +6,12 @@
 //
 
 protocol AndesCoachMarkBodyViewProtocol: class {
-    func setupTextAbove(of y: CGFloat)
-    func setupTextBelow(of y: CGFloat)
-    func setupArrowAboveOfTextAndPointToLeft(y: CGFloat, width: CGFloat)
-    func setupArrowAboveOfTextAndPointToRight(y: CGFloat, width: CGFloat)
-    func setupArrowBelowOfTextAndPointToLeft(y: CGFloat, width: CGFloat)
-    func setupArrowBelowOfTextAndPointToRight(y: CGFloat, width: CGFloat)
+    func setupTextAbove(of positionY: CGFloat)
+    func setupTextBelow(of positionY: CGFloat)
+    func setupArrowAboveOfTextAndPointToLeft(positionY: CGFloat, width: CGFloat)
+    func setupArrowAboveOfTextAndPointToRight(positionY: CGFloat, width: CGFloat)
+    func setupArrowBelowOfTextAndPointToLeft(positionY: CGFloat, width: CGFloat)
+    func setupArrowBelowOfTextAndPointToRight(positionY: CGFloat, width: CGFloat)
 
     func setupTitleLabel(title: String)
     func setupDescriptionLabel(description: String)
@@ -94,53 +94,53 @@ extension AndesCoachMarkBodyView: AndesCoachMarkBodyViewProtocol {
         return view.convert(view.bounds, to: self)
     }
 
-    func setupTextAbove(of y: CGFloat) {
-        labelsContainer.bottomAnchor.constraint(equalTo: topAnchor, constant: y - animationDY).isActive = true
+    func setupTextAbove(of positionY: CGFloat) {
+        labelsContainer.bottomAnchor.constraint(equalTo: topAnchor, constant: positionY - animationDY).isActive = true
     }
 
-    func setupTextBelow(of y: CGFloat) {
-        labelsContainer.topAnchor.constraint(equalTo: topAnchor, constant: y - animationDY).isActive = true
+    func setupTextBelow(of positionY: CGFloat) {
+        labelsContainer.topAnchor.constraint(equalTo: topAnchor, constant: positionY - animationDY).isActive = true
     }
 
-    func setupArrowAboveOfTextAndPointToLeft(y: CGFloat, width: CGFloat) {
+    func setupArrowAboveOfTextAndPointToLeft(positionY: CGFloat, width: CGFloat) {
         arrowView = AndesCoachMarkArrowView(width: width, direction: .toUpLeft)
         guard let arrowView = arrowView else { return }
 
         addSubview(arrowView)
-        arrowView.topAnchor.constraint(equalTo: topAnchor, constant: y - animationDY).isActive = true
+        arrowView.topAnchor.constraint(equalTo: topAnchor, constant: positionY - animationDY).isActive = true
         arrowView.trailingAnchor.constraint(equalTo: labelsContainer.centerXAnchor).isActive = true
 
         labelsContainer.topAnchor.constraint(equalTo: arrowView.bottomAnchor).isActive = true
     }
 
-    func setupArrowAboveOfTextAndPointToRight(y: CGFloat, width: CGFloat) {
+    func setupArrowAboveOfTextAndPointToRight(positionY: CGFloat, width: CGFloat) {
         arrowView = AndesCoachMarkArrowView(width: width, direction: .toUpRight)
         guard let arrowView = arrowView else { return }
 
         addSubview(arrowView)
-        arrowView.topAnchor.constraint(equalTo: topAnchor, constant: y - animationDY).isActive = true
+        arrowView.topAnchor.constraint(equalTo: topAnchor, constant: positionY - animationDY).isActive = true
         arrowView.leadingAnchor.constraint(equalTo: labelsContainer.centerXAnchor).isActive = true
 
         labelsContainer.topAnchor.constraint(equalTo: arrowView.bottomAnchor).isActive = true
     }
 
-    func setupArrowBelowOfTextAndPointToLeft(y: CGFloat, width: CGFloat) {
+    func setupArrowBelowOfTextAndPointToLeft(positionY: CGFloat, width: CGFloat) {
         arrowView = AndesCoachMarkArrowView(width: width, direction: .toDownLeft)
         guard let arrowView = arrowView else { return }
 
         addSubview(arrowView)
-        arrowView.bottomAnchor.constraint(equalTo: topAnchor, constant: y - animationDY).isActive = true
+        arrowView.bottomAnchor.constraint(equalTo: topAnchor, constant: positionY - animationDY).isActive = true
         arrowView.trailingAnchor.constraint(equalTo: labelsContainer.centerXAnchor).isActive = true
 
         labelsContainer.bottomAnchor.constraint(equalTo: arrowView.topAnchor).isActive = true
     }
 
-    func setupArrowBelowOfTextAndPointToRight(y: CGFloat, width: CGFloat) {
+    func setupArrowBelowOfTextAndPointToRight(positionY: CGFloat, width: CGFloat) {
         arrowView = AndesCoachMarkArrowView(width: width, direction: .toDownRight)
         guard let arrowView = arrowView else { return }
 
         addSubview(arrowView)
-        arrowView.bottomAnchor.constraint(equalTo: topAnchor, constant: y - animationDY).isActive = true
+        arrowView.bottomAnchor.constraint(equalTo: topAnchor, constant: positionY - animationDY).isActive = true
         arrowView.leadingAnchor.constraint(equalTo: labelsContainer.centerXAnchor).isActive = true
 
         labelsContainer.bottomAnchor.constraint(equalTo: arrowView.topAnchor).isActive = true
