@@ -8,12 +8,12 @@
 public struct AndesCoachMarkEntity {
     public let steps: [AndesCoachMarkStepEntity]
     public let scrollView: UIScrollView?
-    public let completionHandler: (() -> ())?
-    
+    public let completionHandler: (() -> Void)?
+
     public init(steps: [AndesCoachMarkStepEntity],
                 scrollView: UIScrollView?,
-                completionHandler: (() -> ())?) {
-        
+                completionHandler: (() -> Void)?) {
+
         self.steps = steps
         self.scrollView = scrollView
         self.completionHandler = completionHandler

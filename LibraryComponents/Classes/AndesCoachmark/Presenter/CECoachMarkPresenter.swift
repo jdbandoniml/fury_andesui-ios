@@ -11,8 +11,9 @@ class AndesCoachMarkPresenter {
     var model: AndesCoachMarkEntity
     weak var view: AndesCoachMarkViewProtocol?
 
-    var currentIndex = -1
     var animated = true
+
+    private var currentIndex = -1
 
     private var currentStep: AndesCoachMarkStepEntity? {
         if currentIndex < 0 { return nil }

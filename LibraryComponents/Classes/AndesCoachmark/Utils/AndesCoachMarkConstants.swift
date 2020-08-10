@@ -8,7 +8,7 @@
 import Foundation
 
 class AndesCoachMarkConstants {
-    
+
     private init() {}
 
 }
@@ -22,12 +22,12 @@ extension AndesCoachMarkConstants {
         static let downRotation = CGFloat.pi*11/12
         static let upRotation = CGFloat.pi/12
     }
-    
+
     struct Animation {
         static let duration = TimeInterval(0.25)
         static let delay = TimeInterval(0.1)
     }
-    
+
     struct Highlight {
         static let margin = CGFloat(12)
         static let borderMargin = CGFloat(1)

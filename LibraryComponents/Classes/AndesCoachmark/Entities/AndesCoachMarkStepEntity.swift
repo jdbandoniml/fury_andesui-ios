@@ -10,12 +10,12 @@ public struct AndesCoachMarkStepEntity {
     public let title: String
     public let description: String
     public let nextText: String
-    
+
     public init (highlighted: HighlightedEntity,
                  title: String,
                  description: String,
                  nextText: String) {
-        
+
         self.highlighted = highlighted
         self.title = title
         self.description = description
@@ -29,10 +29,10 @@ public extension AndesCoachMarkStepEntity {
             case rectangle
             case circle
         }
-        
+
         public let view: UIView
         public let style: Style
-        
+
         public init (view: UIView, style: Style) {
             self.view = view
             self.style = style
