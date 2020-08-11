@@ -12,58 +12,107 @@ import Nimble
 
 class AndesCoachmarkHighlightInteractorTests: QuickSpec {
     override func spec() {
+<<<<<<< Updated upstream
+        let label: UILabel = {
+            let label = UILabel()
+            label.backgroundColor = .white
+            label.textColor = .black
+            return label
+        }()
+
+        let button: UIButton = {
+            let button = UIButton(type: .system)
+            button.backgroundColor = .blue
+            return button
+        }()
+
+        let interactor = AndesCoachMarkHighlightInteractor(overlayView: <#T##UIView#>, view: <#T##UIView#>, bodyViewBounds: <#T##CGRect#>, style: <#T##AndesCoachMarkStepEntity.HighlightedEntity.Style#>)
+
+        describe("Coachmark Highlight Interactor Tests") {
+            context("set highlight") {
+
+                beforeEach {
+                    colorService.setHighlight()
+                }
+
+                it("should change label color") {
+                    expect(label.textColor).to(equal(.white))
+                }
+                it("should change the views background color") {
+                    expect(button.backgroundColor).to(equal(UIColor(red: 0, green: 0, blue: 0.0625, alpha: 1)))
+                    expect(label.backgroundColor).to(equal(UIColor(red: 0.0625, green: 0.0625, blue: 0.0625, alpha: 1)))
+                }
+            }
+            context("clear highlight") {
+                beforeEach {
+                    colorService.setHighlight()
+                    colorService.clearHighlight()
+                }
+
+                it("should change label color") {
+                    expect(label.textColor).to(equal(.black))
+                }
+                it("should change the views background color") {
+                    expect(button.backgroundColor).to(equal(.blue))
+                    expect(label.backgroundColor).to(equal(.white))
+=======
         let overlayView = UIView(frame: UIScreen.main.bounds)
         let bodyViewBounds = CGRect(x: 24, y: 64, width: 200, height: 400)
-
+        
         describe("Coachmark Highlight Interactor Tests") {
             context("Rectangle highlighted") {
                 let viewToHighlight = UIView(frame: CGRect(x: 40, y: 100, width: 30, height: 50))
                 let interactor = AndesCoachMarkHighlightInteractor(overlayView: overlayView, view: viewToHighlight, bodyViewBounds: bodyViewBounds, style: .rectangle)
-
+                
                 it("should return the corner radius") {
                     expect(interactor.getHighlightCornerRadius()).to(equal(8))
                 }
-
+                
                 it("should create a highlightRect with some margins") {
                     expect(interactor.getHighlightRect()).to(equal(CGRect(x: 28, y: 88, width: 54, height: 74)))
                 }
-
+                
                 it("should return that view to highlight is not below of half bodyView") {
                     expect(interactor.isHighlightedViewBelow()).to(beFalse())
                 }
-
+                
                 it("should get the mask path correctly") {
                     let path = UIBezierPath(rect: overlayView.bounds)
                     let viewPath = UIBezierPath(roundedRect: viewToHighlight.frame.insetBy(dx: -12, dy: -12), cornerRadius: 8)
                     path.append(viewPath)
-
+                    
                     expect(interactor.getMaskPath()).to(equal(path.cgPath))
                 }
             }
             context("Circle highlighted") {
                 let viewToHighlight = UIView(frame: CGRect(x: 40, y: 300, width: 40, height: 40))
                 let interactor = AndesCoachMarkHighlightInteractor(overlayView: overlayView, view: viewToHighlight, bodyViewBounds: bodyViewBounds, style: .circle)
-
+                
                 it("should return the corner radius") {
                     expect(interactor.getHighlightCornerRadius()).to(equal(32))
                 }
-
+                
                 it("should create a highlightRect with some margins") {
                     expect(interactor.getHighlightRect()).to(equal(CGRect(x: 28, y: 288, width: 64, height: 64)))
                 }
-
+                
                 it("should return that view to highlight is below of half bodyView") {
                     expect(interactor.isHighlightedViewBelow()).to(beTrue())
                 }
-
+                
                 it("should get the mask path correctly") {
                     let path = UIBezierPath(rect: overlayView.bounds)
                     let viewPath = UIBezierPath(roundedRect: viewToHighlight.frame.insetBy(dx: -12, dy: -12), cornerRadius: 32)
                     path.append(viewPath)
-
+                    
                     expect(interactor.getMaskPath()).to(equal(path.cgPath))
+>>>>>>> Stashed changes
                 }
             }
         }
     }
+<<<<<<< Updated upstream
+
+=======
+>>>>>>> Stashed changes
 }

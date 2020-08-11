@@ -68,7 +68,7 @@ extension AndesCoachMarkHighlightInteractor: AndesCoachMarkHighlightInteractorPr
         case .rectangle:
             return AndesCoachMarkConstants.Highlight.cornerRadius
         case .circle:
-            return (rect.width+margin)/2
+            return (rect.width)/2
         }
     }
 
