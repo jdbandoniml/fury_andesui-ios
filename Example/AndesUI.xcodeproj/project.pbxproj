@@ -44,6 +44,7 @@
 		80B22F1D24DC5C3700FE9197 /* CoachmarkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80B22F1B24DC5C3700FE9197 /* CoachmarkViewController.xib */; };
 		80D6914424E1C024002CF3BC /* AndesCoachmarkHighlightInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D6914324E1C024002CF3BC /* AndesCoachmarkHighlightInteractorTests.swift */; };
 		80D6914624E2D5AC002CF3BC /* AndesCoachmarkConstantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D6914524E2D5AC002CF3BC /* AndesCoachmarkConstantsTests.swift */; };
+		80D6914824E2E5E6002CF3BC /* AndesCoachmarkScrollInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D6914724E2E5E6002CF3BC /* AndesCoachmarkScrollInteractorTests.swift */; };
 		8617BD172499B5860071319C /* SnackbarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8617BD162499B5860071319C /* SnackbarRouter.swift */; };
 		8617BD1F2499B6570071319C /* SnackbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8617BD1D2499B6570071319C /* SnackbarViewController.swift */; };
 		8617BD202499B6570071319C /* SnackbarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8617BD1E2499B6570071319C /* SnackbarViewController.xib */; };
@@ -187,6 +188,7 @@
 		80B22F1B24DC5C3700FE9197 /* CoachmarkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoachmarkViewController.xib; sourceTree = "<group>"; };
 		80D6914324E1C024002CF3BC /* AndesCoachmarkHighlightInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndesCoachmarkHighlightInteractorTests.swift; sourceTree = "<group>"; };
 		80D6914524E2D5AC002CF3BC /* AndesCoachmarkConstantsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndesCoachmarkConstantsTests.swift; sourceTree = "<group>"; };
+		80D6914724E2E5E6002CF3BC /* AndesCoachmarkScrollInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndesCoachmarkScrollInteractorTests.swift; sourceTree = "<group>"; };
 		83BC15984E16075D3226CA24 /* Pods-AndesUI_Tests.mds.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AndesUI_Tests.mds.xcconfig"; path = "Target Support Files/Pods-AndesUI_Tests/Pods-AndesUI_Tests.mds.xcconfig"; sourceTree = "<group>"; };
 		8617BD162499B5860071319C /* SnackbarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackbarRouter.swift; sourceTree = "<group>"; };
 		8617BD1D2499B6570071319C /* SnackbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackbarViewController.swift; sourceTree = "<group>"; };
@@ -595,6 +597,7 @@
 			children = (
 				80D6914324E1C024002CF3BC /* AndesCoachmarkHighlightInteractorTests.swift */,
 				80D6914524E2D5AC002CF3BC /* AndesCoachmarkConstantsTests.swift */,
+				80D6914724E2E5E6002CF3BC /* AndesCoachmarkScrollInteractorTests.swift */,
 			);
 			path = CoachmarkTests;
 			sourceTree = "<group>";
@@ -1120,6 +1123,7 @@
 				9CAD81E923FD66ED00D43EB9 /* AndesIconsProviderTests.swift in Sources */,
 				9C592C0B2450A6B70038785E /* AndesTextAreaTests.swift in Sources */,
 				E615508A23D619E300417B5F /* AndesButtonTests.swift in Sources */,
+				80D6914824E2E5E6002CF3BC /* AndesCoachmarkScrollInteractorTests.swift in Sources */,
 				02683A5B24B36E1000C3FD9A /* AndesThumbnailTests.swift in Sources */,
 				8634C9E124A650B900DB7B9F /* AndeSnackbarManagerTests.swift in Sources */,
 				9C592C0E2450A6BD0038785E /* AndesEnumStringConvertibleTests.swift in Sources */,
