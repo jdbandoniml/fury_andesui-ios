@@ -12,14 +12,12 @@ import Nimble
 
 class AndesCoachmarkScrollInteractorTests: QuickSpec {
     override func spec() {
-        let scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
-        let bodyView: UIView = {
-            let view = UIView(frame: CGRect(x: 12, y: 30, width: 100, height: 100))
-            let subview = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-            view.addSubview(subview)
-            return view
-        }()
-        let mainView = createMainView()
+
+        let resolver = AndesCoachmarkStubsResolver(.oneStep)
+
+        let scrollView = resolver.scrollView
+        let bodyView = resolver.bodyView
+        let mainView = resolver.mainView
         var scrollInteractor: AndesCoachMarkScrollInteractor!
 
         var completionBlockPerformed = false
@@ -88,17 +86,5 @@ class AndesCoachmarkScrollInteractorTests: QuickSpec {
                 }
             }
         }
-    }
-
-    func createMainView() -> UIView {
-        let mainView = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
-        let firstView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-        let secondView = UIView(frame: CGRect(x: 0, y: 35, width: 20, height: 20))
-        let thirdView = UIView(frame: CGRect(x: 0, y: 60, width: 100, height: 100))
-
-        mainView.addSubview(firstView)
-        mainView.addSubview(secondView)
-        mainView.addSubview(thirdView)
-        return mainView
     }
 }
