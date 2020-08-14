@@ -17,7 +17,7 @@ class AndesCoachmarkBodyPresenterTests: QuickSpec {
         describe("Andes Coachmark Body Presenter Tests") {
             context("test viewLaidOut") {
                 it("should be executed once") {
-                    let resolver: AndesCoachmarkBodyStubsResolver = AndesCoachmarkBodyStubsResolver(.centerViewAbove)
+                    let resolver: AndesCoachmarkBodyStubsResolver = AndesCoachmarkBodyStubsResolver(.centerAboveView)
                     guard let model = resolver.model else {
                         fail()
                         return
@@ -33,7 +33,7 @@ class AndesCoachmarkBodyPresenterTests: QuickSpec {
                     expect(numberOfCalls).to(equal(viewDelegateMock.totalNumberOfCalls()))
                 }
                 it("should set title and description correctly") {
-                    let resolver: AndesCoachmarkBodyStubsResolver = AndesCoachmarkBodyStubsResolver(.centerViewAbove)
+                    let resolver: AndesCoachmarkBodyStubsResolver = AndesCoachmarkBodyStubsResolver(.centerAboveView)
                     guard let model = resolver.model else {
                         fail()
                         return
@@ -51,7 +51,7 @@ class AndesCoachmarkBodyPresenterTests: QuickSpec {
             }
             context("test arrow drawing") {
                 it("should just draw text above") {
-                    let resolver: AndesCoachmarkBodyStubsResolver = AndesCoachmarkBodyStubsResolver(.centerViewAbove)
+                    let resolver: AndesCoachmarkBodyStubsResolver = AndesCoachmarkBodyStubsResolver(.centerAboveView)
                     guard let model = resolver.model else {
                         fail()
                         return
@@ -64,11 +64,11 @@ class AndesCoachmarkBodyPresenterTests: QuickSpec {
                     MockSwift.verify(viewDelegateMock.didCallSetupTextAbove)
                     MockSwift.verify(viewDelegateMock.didCallConvertCoordinates, wasCalledTimes: 2)
                     MockSwift.verify(viewDelegateMock, wasCalledTimes: 5)
-                    expect(viewDelegateMock.positionY).to(equal(-24))
+                    expect(viewDelegateMock.positionY).to(equal(41))
                     expect(viewDelegateMock.arrowWidth).to(beNil())
                 }
                 it("should just draw text below") {
-                    let resolver: AndesCoachmarkBodyStubsResolver = AndesCoachmarkBodyStubsResolver(.centerLeftViewBelow)
+                    let resolver: AndesCoachmarkBodyStubsResolver = AndesCoachmarkBodyStubsResolver(.centerLeftBelowView)
                     guard let model = resolver.model else {
                         fail()
                         return
@@ -81,11 +81,11 @@ class AndesCoachmarkBodyPresenterTests: QuickSpec {
                     MockSwift.verify(viewDelegateMock.didCallSetupTextBelow)
                     MockSwift.verify(viewDelegateMock.didCallConvertCoordinates, wasCalledTimes: 2)
                     MockSwift.verify(viewDelegateMock, wasCalledTimes: 5)
-                    expect(viewDelegateMock.positionY).to(equal(20))
+                    expect(viewDelegateMock.positionY).to(equal(40))
                     expect(viewDelegateMock.arrowWidth).to(beNil())
                 }
                 it("should draw arrow to left below") {
-                    let resolver: AndesCoachmarkBodyStubsResolver = AndesCoachmarkBodyStubsResolver(.leftViewBelow)
+                    let resolver: AndesCoachmarkBodyStubsResolver = AndesCoachmarkBodyStubsResolver(.leftBelowView)
                     guard let model = resolver.model else {
                         fail()
                         return
@@ -96,12 +96,61 @@ class AndesCoachmarkBodyPresenterTests: QuickSpec {
                     presenter.viewLaidOut()
 
                     MockSwift.verify(viewDelegateMock.didCallSetupArrowBelowOfTextAndPointToLeft)
-                    MockSwift.verify(viewDelegateMock, wasCalledTimes: 3)
-                    expect(viewDelegateMock.positionY).to(equal(20))
-                    expect(viewDelegateMock.arrowWidth).to(equal(10))
+                    MockSwift.verify(viewDelegateMock.didCallConvertCoordinates)
+                    MockSwift.verify(viewDelegateMock, wasCalledTimes: 4)
+                    expect(viewDelegateMock.positionY).to(equal(102))
+                    expect(viewDelegateMock.arrowWidth).to(equal(65))
                 }
-                it("should draw arrow to right") {
+                it("should draw arrow to right below") {
+                    let resolver: AndesCoachmarkBodyStubsResolver = AndesCoachmarkBodyStubsResolver(.rightBelowView)
+                    guard let model = resolver.model else {
+                        fail()
+                        return
+                    }
+                    let presenter = AndesCoachMarkBodyPresenter(model: model)
+                    let viewDelegateMock = AndesCoachmarkBodyViewMock()
+                    presenter.view = viewDelegateMock
+                    presenter.viewLaidOut()
 
+                    MockSwift.verify(viewDelegateMock.didCallSetupArrowBelowOfTextAndPointToRight)
+                    MockSwift.verify(viewDelegateMock.didCallConvertCoordinates)
+                    MockSwift.verify(viewDelegateMock, wasCalledTimes: 4)
+                    expect(viewDelegateMock.positionY).to(equal(102))
+                    expect(viewDelegateMock.arrowWidth).to(equal(65))
+                }
+                it("should draw arrow to left above") {
+                    let resolver: AndesCoachmarkBodyStubsResolver = AndesCoachmarkBodyStubsResolver(.leftAboveView)
+                    guard let model = resolver.model else {
+                        fail()
+                        return
+                    }
+                    let presenter = AndesCoachMarkBodyPresenter(model: model)
+                    let viewDelegateMock = AndesCoachmarkBodyViewMock()
+                    presenter.view = viewDelegateMock
+                    presenter.viewLaidOut()
+
+                    MockSwift.verify(viewDelegateMock.didCallSetupArrowAboveOfTextAndPointToLeft)
+                    MockSwift.verify(viewDelegateMock.didCallConvertCoordinates)
+                    MockSwift.verify(viewDelegateMock, wasCalledTimes: 4)
+                    expect(viewDelegateMock.positionY).to(equal(48))
+                    expect(viewDelegateMock.arrowWidth).to(equal(65))
+                }
+                it("should draw arrow to right above") {
+                    let resolver: AndesCoachmarkBodyStubsResolver = AndesCoachmarkBodyStubsResolver(.rightAboveView)
+                    guard let model = resolver.model else {
+                        fail()
+                        return
+                    }
+                    let presenter = AndesCoachMarkBodyPresenter(model: model)
+                    let viewDelegateMock = AndesCoachmarkBodyViewMock()
+                    presenter.view = viewDelegateMock
+                    presenter.viewLaidOut()
+
+                    MockSwift.verify(viewDelegateMock.didCallSetupArrowAboveOfTextAndPointToRight)
+                    MockSwift.verify(viewDelegateMock.didCallConvertCoordinates)
+                    MockSwift.verify(viewDelegateMock, wasCalledTimes: 4)
+                    expect(viewDelegateMock.positionY).to(equal(48))
+                    expect(viewDelegateMock.arrowWidth).to(equal(65))
                 }
             }
         }

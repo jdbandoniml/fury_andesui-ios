@@ -12,34 +12,42 @@ class AndesCoachmarkBodyStubsResolver {
 
     var model: AndesCoachMarkBodyEntity!
     private let mainView = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
-    private let centerView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-    private let centerRightView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-    private let centerLeftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-    private let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-    private let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+    private let centerView = UIView(frame: CGRect(x: 65, y: 65, width: 20, height: 20))
+    private let centerRightView = UIView(frame: CGRect(x: 75, y: 0, width: 20, height: 20))
+    private let centerLeftView = UIView(frame: CGRect(x: 55, y: 0, width: 20, height: 20))
+    private let leftBelowView = UIView(frame: CGRect(x: 0, y: 130, width: 20, height: 20))
+    private let rightBelowView = UIView(frame: CGRect(x: 130, y: 130, width: 20, height: 20))
+    private let leftAboveView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+    private let rightAboveView = UIView(frame: CGRect(x: 130, y: 0, width: 20, height: 20))
 
     enum StubsType {
-        case centerViewAbove
-        case centerRightViewAbove
-        case centerLeftViewBelow
-        case rightViewBelow
-        case leftViewBelow
+        case centerAboveView
+        case centerRightAboveView
+        case centerLeftBelowView
+        case rightBelowView
+        case leftBelowView
+        case rightAboveView
+        case leftAboveView
     }
 
     init(_ type: StubsType) {
         setupMainView()
 
         switch type {
-        case .centerViewAbove:
+        case .centerAboveView:
             model = AndesCoachMarkBodyEntity(title: "title", description: "description", viewToPoint: centerView, position: .above)
-        case .centerRightViewAbove:
+        case .centerRightAboveView:
             model = AndesCoachMarkBodyEntity(title: "title", description: "description", viewToPoint: centerRightView, position: .above)
-        case .centerLeftViewBelow:
+        case .centerLeftBelowView:
             model = AndesCoachMarkBodyEntity(title: "title", description: "description", viewToPoint: centerLeftView, position: .below)
-        case .rightViewBelow:
-            model = AndesCoachMarkBodyEntity(title: "title", description: "description", viewToPoint: rightView, position: .below)
-        case .leftViewBelow:
-            model = AndesCoachMarkBodyEntity(title: "title", description: "description", viewToPoint: leftView, position: .below)
+        case .rightBelowView:
+            model = AndesCoachMarkBodyEntity(title: "title", description: "description", viewToPoint: rightBelowView, position: .above)
+        case .leftBelowView:
+            model = AndesCoachMarkBodyEntity(title: "title", description: "description", viewToPoint: leftBelowView, position: .above)
+        case .rightAboveView:
+            model = AndesCoachMarkBodyEntity(title: "title", description: "description", viewToPoint: rightAboveView, position: .below)
+        case .leftAboveView:
+            model = AndesCoachMarkBodyEntity(title: "title", description: "description", viewToPoint: leftAboveView, position: .below)
         }
     }
 
@@ -47,28 +55,11 @@ class AndesCoachmarkBodyStubsResolver {
         mainView.translatesAutoresizingMaskIntoConstraints = false
 
         mainView.addSubview(centerView)
-        centerView.translatesAutoresizingMaskIntoConstraints = false
-        centerView.centerYAnchor.constraint(equalTo: mainView.centerYAnchor).isActive = true
-        centerView.centerXAnchor.constraint(equalTo: mainView.centerXAnchor).isActive = true
-
-        mainView.addSubview(leftView)
-        leftView.translatesAutoresizingMaskIntoConstraints = false
-        leftView.topAnchor.constraint(equalTo: mainView.topAnchor).isActive = true
-        leftView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor).isActive = true
-
-        mainView.addSubview(rightView)
-        rightView.translatesAutoresizingMaskIntoConstraints = false
-        rightView.topAnchor.constraint(equalTo: mainView.topAnchor).isActive = true
-        rightView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor).isActive = true
-
+        mainView.addSubview(leftBelowView)
+        mainView.addSubview(rightBelowView)
+        mainView.addSubview(leftAboveView)
+        mainView.addSubview(rightAboveView)
         mainView.addSubview(centerRightView)
-        centerRightView.translatesAutoresizingMaskIntoConstraints = false
-        centerRightView.centerYAnchor.constraint(equalTo: mainView.centerYAnchor).isActive = true
-        centerRightView.centerXAnchor.constraint(equalTo: mainView.centerXAnchor, constant: 20).isActive = true
-
         mainView.addSubview(centerLeftView)
-        centerLeftView.translatesAutoresizingMaskIntoConstraints = false
-        centerLeftView.centerYAnchor.constraint(equalTo: mainView.centerYAnchor).isActive = true
-        centerLeftView.centerXAnchor.constraint(equalTo: mainView.centerXAnchor, constant: -20).isActive = true
     }
 }

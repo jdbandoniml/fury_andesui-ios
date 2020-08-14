@@ -36,21 +36,25 @@ class AndesCoachmarkBodyViewMock: AndesCoachMarkBodyViewProtocol, Mock {
     }
 
     func setupArrowAboveOfTextAndPointToLeft(positionY: CGFloat, width: CGFloat) {
+        self.positionY = positionY
         arrowWidth = width
         didCallSetupArrowAboveOfTextAndPointToLeft.wasCalled()
     }
 
     func setupArrowAboveOfTextAndPointToRight(positionY: CGFloat, width: CGFloat) {
+        self.positionY = positionY
         arrowWidth = width
         didCallSetupArrowAboveOfTextAndPointToRight.wasCalled()
     }
 
     func setupArrowBelowOfTextAndPointToLeft(positionY: CGFloat, width: CGFloat) {
+        self.positionY = positionY
         arrowWidth = width
         didCallSetupArrowBelowOfTextAndPointToLeft.wasCalled()
     }
 
     func setupArrowBelowOfTextAndPointToRight(positionY: CGFloat, width: CGFloat) {
+        self.positionY = positionY
         arrowWidth = width
         didCallSetupArrowBelowOfTextAndPointToRight.wasCalled()
     }
@@ -67,9 +71,9 @@ class AndesCoachmarkBodyViewMock: AndesCoachMarkBodyViewProtocol, Mock {
 
     func convertCoordinates(view: UIView) -> CGRect {
         didCallConvertCoordinates.wasCalled()
-        return .zero
+        return view.frame
     }
 
-    var width: CGFloat = .zero
+    var width: CGFloat = 150
 
 }
