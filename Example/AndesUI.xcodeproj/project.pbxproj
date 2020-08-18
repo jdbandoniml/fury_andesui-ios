@@ -52,6 +52,7 @@
 		80D6915324E593DC002CF3BC /* AndesCoachmarkBodyPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D6915224E593DC002CF3BC /* AndesCoachmarkBodyPresenterTests.swift */; };
 		80D6915524E5C397002CF3BC /* AndesCoachmarkBodyViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D6915424E5C397002CF3BC /* AndesCoachmarkBodyViewMock.swift */; };
 		80D6915724E5C4F2002CF3BC /* AndesCoachmarkBodyStubsResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D6915624E5C4F2002CF3BC /* AndesCoachmarkBodyStubsResolver.swift */; };
+		80D6915924EC0E98002CF3BC /* AndesCoachmarkNavBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D6915824EC0E98002CF3BC /* AndesCoachmarkNavBarTests.swift */; };
 		8617BD172499B5860071319C /* SnackbarRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8617BD162499B5860071319C /* SnackbarRouter.swift */; };
 		8617BD1F2499B6570071319C /* SnackbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8617BD1D2499B6570071319C /* SnackbarViewController.swift */; };
 		8617BD202499B6570071319C /* SnackbarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8617BD1E2499B6570071319C /* SnackbarViewController.xib */; };
@@ -203,6 +204,7 @@
 		80D6915224E593DC002CF3BC /* AndesCoachmarkBodyPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndesCoachmarkBodyPresenterTests.swift; sourceTree = "<group>"; };
 		80D6915424E5C397002CF3BC /* AndesCoachmarkBodyViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndesCoachmarkBodyViewMock.swift; sourceTree = "<group>"; };
 		80D6915624E5C4F2002CF3BC /* AndesCoachmarkBodyStubsResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndesCoachmarkBodyStubsResolver.swift; sourceTree = "<group>"; };
+		80D6915824EC0E98002CF3BC /* AndesCoachmarkNavBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndesCoachmarkNavBarTests.swift; sourceTree = "<group>"; };
 		83BC15984E16075D3226CA24 /* Pods-AndesUI_Tests.mds.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AndesUI_Tests.mds.xcconfig"; path = "Target Support Files/Pods-AndesUI_Tests/Pods-AndesUI_Tests.mds.xcconfig"; sourceTree = "<group>"; };
 		8617BD162499B5860071319C /* SnackbarRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackbarRouter.swift; sourceTree = "<group>"; };
 		8617BD1D2499B6570071319C /* SnackbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackbarViewController.swift; sourceTree = "<group>"; };
@@ -619,6 +621,7 @@
 				80D6915224E593DC002CF3BC /* AndesCoachmarkBodyPresenterTests.swift */,
 				80D6915424E5C397002CF3BC /* AndesCoachmarkBodyViewMock.swift */,
 				80D6915624E5C4F2002CF3BC /* AndesCoachmarkBodyStubsResolver.swift */,
+				80D6915824EC0E98002CF3BC /* AndesCoachmarkNavBarTests.swift */,
 			);
 			path = CoachmarkTests;
 			sourceTree = "<group>";
@@ -1149,6 +1152,7 @@
 			files = (
 				80D6915524E5C397002CF3BC /* AndesCoachmarkBodyViewMock.swift in Sources */,
 				9C592C0C2450A6B70038785E /* AndesTextFieldSideComponentTests.swift in Sources */,
+				80D6915924EC0E98002CF3BC /* AndesCoachmarkNavBarTests.swift in Sources */,
 				80D6914F24E438C2002CF3BC /* MockSwift.swift in Sources */,
 				F85E052324AF79900059C6FA /* AndesRadioButtonTest.swift in Sources */,
 				80D6915124E449B0002CF3BC /* AndesCoachmarkViewMock.swift in Sources */,

@@ -74,7 +74,7 @@ class AndesCoachMarkNavBarView: UIView {
         fatalError("This class does not support NSCoding")
     }
 
-    @objc private func closeButtonTouchUpInside(_ sender: UIControl, with event: UIEvent?) {
+    @objc func closeButtonTouchUpInside(_ sender: UIControl, with event: UIEvent?) {
         delegate?.didClose()
     }
 
