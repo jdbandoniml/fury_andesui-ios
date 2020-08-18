@@ -106,12 +106,10 @@ public class AndesCoachMarkView: UIView {
             mustStart = false
             presenter.start()
         }
-
     }
-
 }
 
-// MARK: - Actions from  NavBar
+// MARK: - Actions from NavBar
 extension AndesCoachMarkView: AndesCoachMarkNavBarViewDelegate {
     func didClose() {
         presenter.didCloseButtonTap()

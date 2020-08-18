@@ -39,24 +39,27 @@ class AndesCoachmarkStubsResolver {
     }
 
     private func oneStep() -> AndesCoachMarkEntity {
-        let step = AndesCoachMarkStepEntity(highlighted: AndesCoachMarkStepEntity.HighlightedEntity(view: mainView.subviews[0], style: .rectangle),
-                                            title: "some title",
+        let step = AndesCoachMarkStepEntity(title: "some title",
                                             description: "some description",
+                                            view: mainView.subviews[0],
+                                            style: .rectangle,
                                             nextText: "Next")
 
         return AndesCoachMarkEntity(steps: [step], scrollView: scrollView, completionHandler: nil)
     }
 
     private func twoSteps() -> AndesCoachMarkEntity {
-        let firstStep = AndesCoachMarkStepEntity(highlighted: AndesCoachMarkStepEntity.HighlightedEntity(view: mainView.subviews[0], style: .rectangle),
-                                            title: "Some title",
-                                            description: "Some description",
-                                            nextText: "Next")
+        let firstStep = AndesCoachMarkStepEntity(title: "Some title",
+                                                 description: "Some description",
+                                                 view: mainView.subviews[0],
+                                                 style: .rectangle,
+                                                 nextText: "Next")
 
-        let secondStep = AndesCoachMarkStepEntity(highlighted: AndesCoachMarkStepEntity.HighlightedEntity(view: mainView.subviews[1], style: .rectangle),
-                                                   title: "Some another title",
-                                                   description: "Some another description",
-                                                   nextText: "Got it")
+        let secondStep = AndesCoachMarkStepEntity(title: "Some another title",
+                                                  description: "Some another description",
+                                                  view: mainView.subviews[1],
+                                                  style: .rectangle,
+                                                  nextText: "Got it")
 
         return AndesCoachMarkEntity(steps: [firstStep, secondStep], scrollView: scrollView, completionHandler: nil)
     }
