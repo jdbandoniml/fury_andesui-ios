@@ -10,6 +10,7 @@ import UIKit
 
 protocol HomeRouter: NSObject {
     func route(from: UIViewController)
+    func routeToCoachmark()
     func routeToButton()
     func routeToMessages()
     func routeToBadges()
@@ -27,6 +28,7 @@ class HomeAppRouter: NSObject {
     let view = HomeViewController()
     var presenter: HomePresenter?
 
+    let coachmarkRouter = CoachmarkAppRouter()
     let buttonsRouter = ButtonsAppRouter()
     let messagesRouter = MessagesAppRouter()
     let badgesRouter = BadgesAppRouter()
@@ -41,6 +43,7 @@ class HomeAppRouter: NSObject {
 }
 
 extension HomeAppRouter: HomeRouter {
+
     func route(from: UIViewController) {
         presenter = HomeViewPresenter(view: view, router: self)
         view.presenter = presenter
@@ -49,6 +52,10 @@ extension HomeAppRouter: HomeRouter {
         navigation.modalPresentationStyle = .fullScreen
 
         from.present(navigation, animated: false, completion: nil)
+    }
+
+    func routeToCoachmark() {
+        coachmarkRouter.route(from: view)
     }
 
     func routeToButton() {

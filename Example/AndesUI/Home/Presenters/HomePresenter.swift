@@ -9,6 +9,7 @@
 import UIKit
 
 protocol HomePresenter: NSObject {
+    func presentCoachmark()
     func presentButtons()
     func presentMessages()
     func presentTextField()
@@ -34,6 +35,10 @@ class HomeViewPresenter: NSObject {
 }
 
 extension HomeViewPresenter: HomePresenter {
+    func presentCoachmark() {
+        router.routeToCoachmark()
+    }
+
     func presentButtons() {
         router.routeToButton()
     }
