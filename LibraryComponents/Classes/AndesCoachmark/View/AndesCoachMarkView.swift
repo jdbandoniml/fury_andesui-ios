@@ -39,8 +39,11 @@ public class AndesCoachMarkView: UIView {
         }
     }
 
+    var onExit: (() -> Void)?
+
     // MARK: - Initialization
     public init(model: AndesCoachMarkEntity) {
+        self.onExit = model.completionHandler
         self.presenter = AndesCoachMarkPresenter(model: model)
 
         super.init(frame: CGRect.zero)
