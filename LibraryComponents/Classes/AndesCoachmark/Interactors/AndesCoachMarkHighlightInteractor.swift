@@ -19,12 +19,12 @@ class AndesCoachMarkHighlightInteractor {
     private let overlayView: UIView
     private let view: UIView
     private let bodyViewBounds: CGRect
-    private let style: AndesCoachMarkStepEntity.HighlightedEntity.Style
+    private let style: AndesCoachMarkStepEntity.Style
     private let margin: CGFloat
 
     private lazy var highlightedRect: CGRect = highlightedRectCalculation()
 
-    required init (overlayView: UIView, view: UIView, bodyViewBounds: CGRect, style: AndesCoachMarkStepEntity.HighlightedEntity.Style, margin: CGFloat = AndesCoachMarkConstants.Highlight.margin) {
+    required init (overlayView: UIView, view: UIView, bodyViewBounds: CGRect, style: AndesCoachMarkStepEntity.Style, margin: CGFloat = AndesCoachMarkConstants.Highlight.margin) {
         self.overlayView = overlayView
         self.view = view
         self.bodyViewBounds = bodyViewBounds
@@ -68,7 +68,7 @@ extension AndesCoachMarkHighlightInteractor: AndesCoachMarkHighlightInteractorPr
         case .rectangle:
             return AndesCoachMarkConstants.Highlight.cornerRadius
         case .circle:
-            return (rect.width+margin)/2
+            return (rect.width)/2
         }
     }
 

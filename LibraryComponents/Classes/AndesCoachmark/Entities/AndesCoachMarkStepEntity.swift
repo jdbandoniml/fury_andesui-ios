@@ -6,36 +6,27 @@
 //
 
 public struct AndesCoachMarkStepEntity {
-    public let highlighted: HighlightedEntity
+    public enum Style {
+        case rectangle
+        case circle
+    }
+
     public let title: String
     public let description: String
+    public let view: UIView
+    public let style: Style
     public let nextText: String
 
-    public init (highlighted: HighlightedEntity,
-                 title: String,
+    public init (title: String,
                  description: String,
+                 view: UIView,
+                 style: Style,
                  nextText: String) {
 
-        self.highlighted = highlighted
         self.title = title
         self.description = description
         self.nextText = nextText
-    }
-}
-
-public extension AndesCoachMarkStepEntity {
-    struct HighlightedEntity {
-        public enum Style {
-            case rectangle
-            case circle
-        }
-
-        public let view: UIView
-        public let style: Style
-
-        public init (view: UIView, style: Style) {
-            self.view = view
-            self.style = style
-        }
+        self.view = view
+        self.style = style
     }
 }

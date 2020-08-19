@@ -31,24 +31,25 @@ class AndesCoachMarkPresenter {
     private func createScrollInteractor() {
         guard let view = view,
             let scrollView = model.scrollView,
-            let highlighted = currentStep?.highlighted,
+            let highlightedView = currentStep?.view,
             let bodyView = view.bodyView else {
                 scrollInteractor = nil
                 return
         }
-        scrollInteractor = AndesCoachMarkScrollInteractor(highlighted.view, scrollView: scrollView, bodyView: bodyView, animated: animated)
+        scrollInteractor = AndesCoachMarkScrollInteractor(highlightedView, scrollView: scrollView, bodyView: bodyView, animated: animated)
 
     }
 
     private func createHighlightInteractor() {
         guard let view = view,
-            let highlighted = currentStep?.highlighted,
+            let highlightedView = currentStep?.view,
+            let style = currentStep?.style,
             let bodyView = view.bodyView,
             let overlayView = bodyView.superview else {
                 highlightInteractor = nil
                 return
         }
-        highlightInteractor = AndesCoachMarkHighlightInteractor(overlayView: overlayView, view: highlighted.view, bodyViewBounds: bodyView.convert(bodyView.bounds, to: overlayView), style: highlighted.style)
+        highlightInteractor = AndesCoachMarkHighlightInteractor(overlayView: overlayView, view: highlightedView, bodyViewBounds: bodyView.convert(bodyView.bounds, to: overlayView), style: style)
 
     }
 
@@ -67,7 +68,7 @@ class AndesCoachMarkPresenter {
         guard let view = view, let currentStep = currentStep else { return }
         view.setBody(AndesCoachMarkBodyPresenter(model: AndesCoachMarkBodyEntity(title: currentStep.title,
                                                                            description: currentStep.description,
-                                                                           viewToPoint: currentStep.highlighted.view,
+                                                                           viewToPoint: currentStep.view,
                                                                            position: position)), removePrevious: removePrevious)
     }
 

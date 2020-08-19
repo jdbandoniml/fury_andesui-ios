@@ -46,23 +46,23 @@ class CoachmarkViewController: UIViewController {
     }
 
     private func setupCoachmark() {
-        let upLeftStep = AndesCoachMarkStepEntity(highlighted: AndesCoachMarkStepEntity.HighlightedEntity(view: upLeftView, style: .rectangle), title: "Con flecha", description: "Se dibuja la flecha arriba a la izquierda.", nextText: "Siguiente")
+        let upLeftStep = AndesCoachMarkStepEntity(title: "Con flecha", description: "Se dibuja la flecha arriba a la izquierda.", view: upLeftView, style: .rectangle, nextText: "Siguiente")
 
-        let upRightStep = AndesCoachMarkStepEntity(highlighted: AndesCoachMarkStepEntity.HighlightedEntity(view: upRightView, style: .rectangle), title: "Con flecha", description: "Se dibuja la flecha arriba a la derecha.", nextText: "Siguiente")
+        let upRightStep = AndesCoachMarkStepEntity(title: "Con flecha", description: "Se dibuja la flecha arriba a la derecha.", view: upRightView, style: .rectangle, nextText: "Siguiente")
 
-        let downLeftStep = AndesCoachMarkStepEntity(highlighted: AndesCoachMarkStepEntity.HighlightedEntity(view: downLeftView, style: .rectangle), title: "Con flecha", description: "Se dibuja la flecha abajo a la izquierda.", nextText: "Siguiente")
+        let downLeftStep = AndesCoachMarkStepEntity(title: "Con flecha", description: "Se dibuja la flecha abajo a la izquierda.", view: downLeftView, style: .rectangle, nextText: "Siguiente")
 
-        let downRightStep = AndesCoachMarkStepEntity(highlighted: AndesCoachMarkStepEntity.HighlightedEntity(view: downRightView, style: .rectangle), title: "Con flecha", description: "Se dibuja la flecha abajo a la derecha.", nextText: "Siguiente")
+        let downRightStep = AndesCoachMarkStepEntity(title: "Con flecha", description: "Se dibuja la flecha abajo a la derecha.", view: downRightView, style: .rectangle, nextText: "Siguiente")
 
-        let leftStep = AndesCoachMarkStepEntity(highlighted: AndesCoachMarkStepEntity.HighlightedEntity(view: leftView, style: .rectangle), title: "Con scroll", description: "Es necesario performar un scroll para poder señalar la vista.", nextText: "Siguiente")
+        let leftStep = AndesCoachMarkStepEntity(title: "Con scroll", description: "Es necesario performar un scroll para poder señalar la vista.", view: leftView, style: .rectangle, nextText: "Siguiente")
 
-        let rightStep = AndesCoachMarkStepEntity(highlighted: AndesCoachMarkStepEntity.HighlightedEntity(view: rightView, style: .rectangle), title: "Con scroll", description: "Es necesario performar un scroll para poder señalar la vista.", nextText: "Siguiente")
+        let rightStep = AndesCoachMarkStepEntity(title: "Con scroll", description: "Es necesario performar un scroll para poder señalar la vista.", view: rightView, style: .rectangle, nextText: "Siguiente")
 
-        let centerStep = AndesCoachMarkStepEntity(highlighted: AndesCoachMarkStepEntity.HighlightedEntity(view: centerView, style: .circle), title: "Sin flecha", description: "No se dibuja flecha porque está centrado.", nextText: "Siguiente")
+        let centerStep = AndesCoachMarkStepEntity(title: "Sin flecha", description: "No se dibuja flecha porque está centrado.", view: centerView, style: .circle, nextText: "Siguiente")
 
-        let leftCenterStep = AndesCoachMarkStepEntity(highlighted: AndesCoachMarkStepEntity.HighlightedEntity(view: leftCenterView, style: .rectangle), title: "Sin flecha, descentrado", description: "No se dibuja flecha porque no está lo suficientemente desplazado a la izquierda.", nextText: "Siguiente")
+        let leftCenterStep = AndesCoachMarkStepEntity(title: "Sin flecha, descentrado", description: "No se dibuja flecha porque no está lo suficientemente desplazado a la izquierda.", view: leftCenterView, style: .rectangle, nextText: "Siguiente")
 
-        let rightCenterStep = AndesCoachMarkStepEntity(highlighted: AndesCoachMarkStepEntity.HighlightedEntity(view: rightCenterView, style: .rectangle), title: "Sin flecha, descentrado", description: "No se dibuja flecha porque no está lo suficientemente desplazado a la derecha.", nextText: "Terminar")
+        let rightCenterStep = AndesCoachMarkStepEntity(title: "Sin flecha, descentrado", description: "No se dibuja flecha porque no está lo suficientemente desplazado a la derecha.", view: rightCenterView, style: .rectangle, nextText: "Terminar")
 
         let model = AndesCoachMarkEntity(steps: [upLeftStep, upRightStep, downLeftStep, downRightStep, leftStep, rightStep, centerStep, leftCenterStep, rightCenterStep],
                              scrollView: scrollView,

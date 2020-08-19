@@ -53,7 +53,7 @@ class AndesCoachMarkFooterView: UIView {
         fatalError("This class does not support NSCoding")
     }
 
-    @objc private func nextButtonTouchUpInside(_ sender: UIControl, with event: UIEvent?) {
+    @objc func nextButtonTouchUpInside(_ sender: UIControl, with event: UIEvent?) {
         delegate?.didNext()
     }
 

@@ -9,7 +9,5 @@ import Foundation
 
 public protocol AndesCoachMarkViewDelegate: class {
     func onShowNext(stepIndex: Int)
-    func onShowPrevious(stepIndex: Int)
     func onClose(stepIndex: Int)
-    func onExit()
 }

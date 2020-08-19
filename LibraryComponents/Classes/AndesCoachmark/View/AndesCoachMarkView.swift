@@ -39,8 +39,11 @@ public class AndesCoachMarkView: UIView {
         }
     }
 
+    var onExit: (() -> Void)?
+
     // MARK: - Initialization
     public init(model: AndesCoachMarkEntity) {
+        self.onExit = model.completionHandler
         self.presenter = AndesCoachMarkPresenter(model: model)
 
         super.init(frame: CGRect.zero)
@@ -106,12 +109,10 @@ public class AndesCoachMarkView: UIView {
             mustStart = false
             presenter.start()
         }
-
     }
-
 }
 
-// MARK: - Actions from  NavBar
+// MARK: - Actions from NavBar
 extension AndesCoachMarkView: AndesCoachMarkNavBarViewDelegate {
     func didClose() {
         presenter.didCloseButtonTap()
