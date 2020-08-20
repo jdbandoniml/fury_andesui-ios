@@ -39,7 +39,9 @@ class AndesCoachMarkHighlightInteractor {
         //If the highlightRect dosen't fit in bodyView, it will be cutted
         //Horizontal excess
         let rectConvertedCuttedX = max(rectConverted.minX, margin)
-        let rectConvertedCuttedWidth = (rectConverted.minX < margin ? rectConverted.width - (margin - rectConverted.minX) : rectConverted.width)
+        var rectConvertedCuttedWidth = rectConverted.width
+        if rectConverted.minX < margin { rectConvertedCuttedWidth -= (margin - rectConverted.minX) }
+        if rectConverted.maxX + margin > overlayView.bounds.width { rectConvertedCuttedWidth -= (margin + rectConverted.maxX - overlayView.bounds.width) }
 
         //Vertical excess
         if !bodyViewBounds.contains(rectConverted.insetBy(dx: bodyViewBounds.minX, dy: -margin)) {
