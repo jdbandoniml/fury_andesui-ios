@@ -11,11 +11,11 @@ public struct AndesCoachMarkStepEntity {
         case circle
     }
 
-    public let title: String
-    public let description: String
-    public let view: UIView
-    public let style: Style
-    public let nextText: String
+    let title: String
+    let description: String
+    let view: UIView
+    let style: Style
+    let nextText: String
 
     public init (title: String,
                  description: String,

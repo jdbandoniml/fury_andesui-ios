@@ -6,9 +6,9 @@
 //
 
 public struct AndesCoachMarkEntity {
-    public let steps: [AndesCoachMarkStepEntity]
-    public let scrollView: UIScrollView?
-    public let completionHandler: (() -> Void)?
+    let steps: [AndesCoachMarkStepEntity]
+    let scrollView: UIScrollView?
+    let completionHandler: (() -> Void)?
 
     public init(steps: [AndesCoachMarkStepEntity],
                 scrollView: UIScrollView?,
