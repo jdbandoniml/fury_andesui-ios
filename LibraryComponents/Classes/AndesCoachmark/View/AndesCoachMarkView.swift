@@ -12,7 +12,7 @@ public class AndesCoachMarkView: UIView {
     let maskLayer = CAShapeLayer()
 
     public weak var delegate: AndesCoachMarkViewDelegate?
-    public let overlayColor: UIColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.80)
+    public let overlayColor: UIColor = UIColor.Andes.gray800
 
     var highlightedView: AndesCoachMarkHighlightedView?
 

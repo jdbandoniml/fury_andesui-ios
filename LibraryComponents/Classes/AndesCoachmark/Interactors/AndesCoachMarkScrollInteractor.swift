@@ -41,7 +41,7 @@ class AndesCoachMarkScrollInteractor {
 
     func scrollIfNeeded(completion: (() -> Void)? = nil) {
         //If coachmark is partially invisible at least, I need to scroll
-        //If coachmark is visible and referenceview is uncompletely visible I need to scroll as match as posible without hiding the coachmark
+        //If coachmark is visible and referenceview is uncompletely visible I need to scroll as much as posible without hiding the coachmark
 
         guard let bodyViewContentSize = (bodyView.subviews.reduce(nil) { (rect, subview) -> CGRect in
             return (rect ?? subview.frame) + subview.frame
