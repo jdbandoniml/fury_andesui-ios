@@ -20,6 +20,7 @@ class AndesCoachMarkArrowView: UIView {
         self.direction = direction
         super.init(frame: .zero)
 
+        backgroundColor = .clear
         shapeLayer.frame = CGRect(x: 0, y: 0, width: arrowWidth, height: arrowHeight)
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.strokeColor = UIColor.white.cgColor

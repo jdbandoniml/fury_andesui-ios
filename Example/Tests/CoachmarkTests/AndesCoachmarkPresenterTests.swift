@@ -23,7 +23,7 @@ class AndesCoachmarkPresenterTests: QuickSpec {
                     expect(presenter.getWindow()).to(equal(UIApplication.shared.windows.filter {$0.isKeyWindow}.last))
                 }
                 it("should get status bar height") {
-                    expect(presenter.getStatusBarHeight()).to(equal(20))
+                    expect(presenter.getStatusBarHeight()).to(equal(20) || equal(44))
                 }
             }
 
