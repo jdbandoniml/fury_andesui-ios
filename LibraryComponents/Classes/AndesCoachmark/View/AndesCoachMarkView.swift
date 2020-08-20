@@ -31,8 +31,6 @@ public class AndesCoachMarkView: UIView {
     var body: AndesCoachMarkBodyView?
     var presenter: AndesCoachMarkPresenter
 
-    var mustStart = false
-
     var animated: Bool {
         get {
             return self.presenter.animated
@@ -99,17 +97,9 @@ public class AndesCoachMarkView: UIView {
     }
 
     public func start() {
-        mustStart = true
-        setNeedsLayout()
+        presenter.start()
     }
 
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        if mustStart {
-            mustStart = false
-            presenter.start()
-        }
-    }
 }
 
 // MARK: - Actions from NavBar
