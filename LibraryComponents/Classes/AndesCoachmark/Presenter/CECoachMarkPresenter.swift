@@ -8,7 +8,7 @@
 import UIKit
 
 class AndesCoachMarkPresenter {
-    var model: AndesCoachMarkEntity
+    private(set) var model: AndesCoachMarkEntity
     weak var view: AndesCoachMarkViewProtocol?
 
     var animated = true
