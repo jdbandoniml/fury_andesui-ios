@@ -29,7 +29,7 @@ public class AndesCoachMarkView: UIView {
         return footer
     }()
     var body: AndesCoachMarkBodyView?
-    var presenter: AndesCoachMarkPresenter
+    private var presenter: AndesCoachMarkPresenter
 
     var animated: Bool {
         get {
