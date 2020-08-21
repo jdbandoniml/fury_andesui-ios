@@ -31,25 +31,22 @@ class AndesCoachMarkPresenter {
     private func createScrollInteractor() {
         guard let view = view,
             let scrollView = model.scrollView,
-            let highlightedView = currentStep?.view,
             let bodyView = view.bodyView else {
                 scrollInteractor = nil
                 return
         }
-        scrollInteractor = AndesCoachMarkScrollInteractor(highlightedView, scrollView: scrollView, bodyView: bodyView, animated: animated)
+        scrollInteractor = AndesCoachMarkScrollInteractor(UIView(), scrollView: scrollView, bodyView: bodyView, animated: animated)
 
     }
 
     private func createHighlightInteractor() {
         guard let view = view,
-            let highlightedView = currentStep?.view,
-            let style = currentStep?.style,
             let bodyView = view.bodyView,
             let overlayView = bodyView.superview else {
                 highlightInteractor = nil
                 return
         }
-        highlightInteractor = AndesCoachMarkHighlightInteractor(overlayView: overlayView, view: highlightedView, bodyViewBounds: bodyView.convert(bodyView.bounds, to: overlayView), style: style)
+        highlightInteractor = AndesCoachMarkHighlightInteractor(overlayView: overlayView, view: UIView(), bodyViewBounds: bodyView.convert(bodyView.bounds, to: overlayView), style: .rectangle)
 
     }
 
@@ -75,17 +72,18 @@ class AndesCoachMarkPresenter {
     private func prepare() {
         guard let view = view, let currentStep = currentStep else { return }
 
-        createHighlightInteractor()
+        highlightInteractor?.update(view: currentStep.view, style: currentStep.style)
         let bodyPosition: AndesCoachMarkBodyEntity.Position = highlightInteractor?.isHighlightedViewBelow() ?? true ? .above : .below
 
         view.setNavBar("\(currentIndex+1) de \(model.steps.count)")
         view.setFooter(currentStep.nextText)
         view.hideBody()
         setBody(bodyPosition, removePrevious: false)
-        createScrollInteractor()
+        if let bodyView = view.bodyView {
+            scrollInteractor?.update(highlightedView: currentStep.view, bodyView: bodyView)
+        }
 
         //If it needs scroll, it will be performed
-        //This 'if let' line is here because scrollInteractor is a new instance!
         if let scrollInteractor = scrollInteractor, scrollInteractor.isScrollNeeded() {
             view.removeHighlight()
             hide()
@@ -111,8 +109,8 @@ class AndesCoachMarkPresenter {
     }
 
     private func show() {
-        createHighlightInteractor()
-        guard let view = view, let highlightInteractor = highlightInteractor else { return }
+        guard let view = view, let currentStep = currentStep, let highlightInteractor = highlightInteractor else { return }
+        highlightInteractor.update(view: currentStep.view, style: currentStep.style)
 
         view.setHighlight(frame: highlightInteractor.getHighlightRect(), cornerRadius: highlightInteractor.getHighlightCornerRadius(), maskPath: highlightInteractor.getMaskPath())
         view.show()
@@ -133,6 +131,8 @@ class AndesCoachMarkPresenter {
 
         currentIndex = 0
         setBody(.above, removePrevious: true)
+        createHighlightInteractor()
+        createScrollInteractor()
         prepare()
     }
 

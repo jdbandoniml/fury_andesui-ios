@@ -10,10 +10,12 @@ import Foundation
 class AndesCoachMarkScrollInteractor {
 
     private var highlightedView: UIView
-    private var scrollView: UIScrollView
     private var bodyView: UIView
-    private var margin: CGFloat
-    private var animated: Bool
+    private let scrollView: UIScrollView
+    private let margin: CGFloat
+    private let animated: Bool
+
+    private let contentOffset: CGPoint
 
     required init(_ highlightedView: UIView, scrollView: UIScrollView, bodyView: UIView, margin: CGFloat = 16, animated: Bool = true) {
         self.highlightedView = highlightedView
@@ -21,6 +23,14 @@ class AndesCoachMarkScrollInteractor {
         self.bodyView = bodyView
         self.margin = margin
         self.animated = animated
+
+        //Keep this for restoring
+        contentOffset = scrollView.contentOffset
+    }
+
+    func update(highlightedView: UIView, bodyView: UIView) {
+        self.highlightedView = highlightedView
+        self.bodyView = bodyView
     }
 
     func isScrollNeeded() -> Bool {
@@ -89,7 +99,7 @@ class AndesCoachMarkScrollInteractor {
     }
 
     func restore(completion: (() -> Void)? = nil) -> Bool {
-        guard scrollView.contentOffset != .zero else {
+        guard scrollView.contentOffset != contentOffset else {
             completion?()
             return false
         }
@@ -99,14 +109,14 @@ class AndesCoachMarkScrollInteractor {
                 withDuration: 1,
                 animations: { [weak self] in
                     guard let self = self else { return }
-                    self.scrollView.contentOffset = .zero
+                    self.scrollView.contentOffset = self.contentOffset
                 },
                 completion: { _ in
                     completion?()
                 }
             )
         } else {
-            scrollView.contentOffset = .zero
+            scrollView.contentOffset = contentOffset
             completion?()
         }
 

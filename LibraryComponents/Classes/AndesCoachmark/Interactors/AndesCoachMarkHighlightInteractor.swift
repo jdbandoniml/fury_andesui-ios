@@ -12,17 +12,18 @@ protocol AndesCoachMarkHighlightInteractorProtocol: class {
     func getHighlightCornerRadius() -> CGFloat
     func getMaskPath() -> CGPath
     func isHighlightedViewBelow() -> Bool
+    func update(view: UIView, style: AndesCoachMarkStepEntity.Style)
 }
 
 class AndesCoachMarkHighlightInteractor {
 
+    private var view: UIView
+    private var style: AndesCoachMarkStepEntity.Style
     private let overlayView: UIView
-    private let view: UIView
     private let bodyViewBounds: CGRect
-    private let style: AndesCoachMarkStepEntity.Style
     private let margin: CGFloat
 
-    private lazy var highlightedRect: CGRect = highlightedRectCalculation()
+    private var highlightedRect: CGRect { highlightedRectCalculation() }
 
     required init (overlayView: UIView, view: UIView, bodyViewBounds: CGRect, style: AndesCoachMarkStepEntity.Style, margin: CGFloat = AndesCoachMarkConstants.Highlight.margin) {
         self.overlayView = overlayView
@@ -66,6 +67,11 @@ class AndesCoachMarkHighlightInteractor {
 }
 
 extension AndesCoachMarkHighlightInteractor: AndesCoachMarkHighlightInteractorProtocol {
+    func update(view: UIView, style: AndesCoachMarkStepEntity.Style) {
+        self.view = view
+        self.style = style
+    }
+
     func getHighlightRect() -> CGRect {
         return highlightedRect.insetBy(dx: -margin, dy: -margin)
     }

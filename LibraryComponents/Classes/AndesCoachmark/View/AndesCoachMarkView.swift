@@ -63,22 +63,26 @@ public class AndesCoachMarkView: UIView {
             leadingAnchor.constraint(equalTo: window.leadingAnchor),
             trailingAnchor.constraint(equalTo: window.trailingAnchor),
             bottomAnchor.constraint(equalTo: window.bottomAnchor),
-            topAnchor.constraint(equalTo: window.topAnchor, constant: presenter.getStatusBarHeight())
+            topAnchor.constraint(equalTo: window.topAnchor)
         ])
 
         addSubview(navBar)
         NSLayoutConstraint.activate([
             navBar.leadingAnchor.constraint(equalTo: leadingAnchor),
             navBar.trailingAnchor.constraint(equalTo: trailingAnchor),
-            navBar.topAnchor.constraint(equalTo: topAnchor)
+            navBar.topAnchor.constraint(equalTo: topAnchor, constant: presenter.getStatusBarHeight())
         ])
 
         addSubview(footer)
         NSLayoutConstraint.activate([
             footer.leadingAnchor.constraint(equalTo: leadingAnchor),
-            footer.trailingAnchor.constraint(equalTo: trailingAnchor),
-            footer.bottomAnchor.constraint(equalTo: bottomAnchor)
+            footer.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
+        if #available(iOS 11.0, *) {
+            footer.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
+        } else {
+            footer.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        }
     }
 
     private func setupOverlayLayer() {
