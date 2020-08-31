@@ -56,6 +56,14 @@ class AndesCoachMarkHighlightInteractor {
         }
     }
 
+    private func isContainedVertically(_ rect: CGRect, in container: CGRect) -> Bool {
+        if rect.minY < container.minY || rect.maxY > container.maxY {
+            return false
+        }
+        
+        return true
+    }
+    
     private func buildSquareFrom(rect: CGRect, margin: CGFloat) -> UIBezierPath {
         return UIBezierPath(roundedRect: rect.insetBy(dx: -margin, dy: -margin), cornerRadius: AndesCoachMarkConstants.Highlight.cornerRadius)
     }
