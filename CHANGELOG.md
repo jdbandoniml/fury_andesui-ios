@@ -1,3 +1,6 @@
+### 🚀 Features
+- New component: AndesCoachMark | Authors: [@jdbandoniml](https://github.com/mercadolibre/fury_andesui-ios)
+
 ## v3.8.0
 ### 🚀 Features
 - New component: AndesCard | Authors: [@Mobile-Arq](https://github.com/mercadolibre/fury_andesui-ios)

@@ -27,4 +27,9 @@ Pod::Spec.new do |s|
    s.subspec 'LocalIcons' do |la|
     la.resource_bundle = {'AndesIcons' => ['LibraryComponents/Resources/Assets/Images.xcassets']}
    end
+   
+   s.subspec 'Coachmark' do |coachmark|
+    coachmark.source_files = 'LibraryComponents/Classes/AndesCoachmark**/*.{h,m,swift}'
+    coachmark.dependency 'AndesUI/LocalIcons'
+   end
 end
