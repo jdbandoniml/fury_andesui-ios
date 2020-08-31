@@ -50,7 +50,7 @@ import UIKit
     private var onLinkActionPressed: ((_ card: AndesCard) -> Void)?
 
     // closure triggered when user presses the full card
-    private var onCardActionPressed: ((_ card: AndesCard) -> Void)?
+    internal var onCardActionPressed: ((_ card: AndesCard) -> Void)?
 
     // MARK: - Initialization
     public required init?(coder: NSCoder) {
@@ -141,11 +141,13 @@ import UIKit
     ///   - handler: handler to trigger on link tap
     @objc public func setCardAction(handler: @escaping ((_ card: AndesCard) -> Void)) {
         self.onCardActionPressed = handler
+        self.updateContentView()
     }
 
     /// Remove card action if present
     @objc public func removeCardAction() {
         self.onCardActionPressed = nil
+        self.updateContentView()
     }
 }
 

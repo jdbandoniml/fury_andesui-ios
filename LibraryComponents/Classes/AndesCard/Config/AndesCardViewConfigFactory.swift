@@ -21,6 +21,7 @@ internal class AndesCardViewConfigFactory {
                                    titlePadding: padding.titlePaddingSize,
                                    titleHeight: padding.titleHeight,
                                    shadow: hierarchy.cardShadow,
+                                   hasCardAction: card.onCardActionPressed != nil,
                                    titleText: card.title,
                                    linkText: card.linkText,
                                    cardView: card.cardView)

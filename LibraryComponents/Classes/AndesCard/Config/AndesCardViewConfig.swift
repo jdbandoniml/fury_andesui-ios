@@ -16,12 +16,13 @@ internal struct AndesCardViewConfig {
     let titlePadding: UInt
     let titleHeight: UInt
     let shadow: AndesCardShadowConfig?
+    let hasCardAction: Bool
 
     let titleText: String?
     var linkText: String?
     let cardView: UIView
 
-    init(backgroundColor: UIColor, pipeColor: UIColor, borderColor: UIColor?, padding: UInt, titlePadding: UInt, titleHeight: UInt, shadow: AndesCardShadowConfig?, titleText: String?, linkText: String?, cardView: UIView) {
+    init(backgroundColor: UIColor, pipeColor: UIColor, borderColor: UIColor?, padding: UInt, titlePadding: UInt, titleHeight: UInt, shadow: AndesCardShadowConfig?, hasCardAction: Bool, titleText: String?, linkText: String?, cardView: UIView) {
         self.backgroundColor = backgroundColor
         self.pipeColor = pipeColor
         self.borderColor = borderColor
@@ -29,6 +30,7 @@ internal struct AndesCardViewConfig {
         self.titlePadding = titlePadding
         self.titleHeight = titleHeight
         self.shadow = shadow
+        self.hasCardAction = hasCardAction
         self.titleText = titleText
         self.linkText = linkText
         self.cardView = cardView
@@ -42,6 +44,7 @@ internal struct AndesCardViewConfig {
         self.titlePadding = 16
         self.titleHeight = 40
         self.shadow = nil
+        self.hasCardAction = false
         self.titleText = nil
         self.linkText = nil
         self.cardView = UIView()

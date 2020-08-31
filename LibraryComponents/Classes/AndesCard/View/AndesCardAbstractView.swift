@@ -31,6 +31,7 @@ class AndesCardAbstractView: UIView, AndesCardView {
 
     internal var config: AndesCardViewConfig
     private weak var userCardView: UIView?
+    private var cardTapGestureRecongizer: UIGestureRecognizer?
 
     init(withConfig config: AndesCardViewConfig) {
         self.config = config
@@ -67,8 +68,7 @@ class AndesCardAbstractView: UIView, AndesCardView {
     }
 
     private func setupCardAction() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onCardTouchUp))
-        containerView.addGestureRecognizer(tapGesture)
+        self.cardTapGestureRecongizer = UITapGestureRecognizer(target: self, action: #selector(onCardTouchUp))
     }
 
     @objc internal func onCardTouchUp() {
@@ -87,6 +87,7 @@ class AndesCardAbstractView: UIView, AndesCardView {
         updateBorder()
         updateShadow()
         updateTitle()
+        updateCardAction()
     }
 
     private func updateUserView() {
@@ -136,6 +137,20 @@ class AndesCardAbstractView: UIView, AndesCardView {
         titleContainerHeightConstraint.constant = CGFloat(config.titleHeight)
         titleLblLeadingConstraint.constant = CGFloat(config.titlePadding)
         titleLblTrailingConstraint.constant = CGFloat(config.titlePadding)
+    }
+
+    private func updateCardAction() {
+        guard let gestureRecognizer = self.cardTapGestureRecongizer else {
+            return
+        }
+
+        if config.hasCardAction {
+            self.addGestureRecognizer(gestureRecognizer)
+            self.userViewContainer.isUserInteractionEnabled = false
+        } else {
+            self.removeGestureRecognizer(gestureRecognizer)
+            self.userViewContainer.isUserInteractionEnabled = true
+        }
     }
 
     func update(withConfig config: AndesCardViewConfig) {

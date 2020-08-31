@@ -35,6 +35,15 @@
                                                     style:AndesCardStyleElevated
                                                      type:AndesCardTypeNone];
    [self.stackView addArrangedSubview:card];
+    
+    // Basic card with button
+     card = [[AndesCard alloc] initWithCardView: [self buildCardViewWithButton]
+                                          title: nil
+                                        padding:AndesCardPaddingSmall
+                                      hierarchy:AndesCardHierarchyPrimary
+                                          style:AndesCardStyleElevated
+                                           type:AndesCardTypeNone];
+    [self.stackView addArrangedSubview:card];
 
     // Card with title
     card = [[AndesCard alloc] initWithCardView: [self buildCardView]
@@ -144,7 +153,7 @@
 
 - (UIView *)buildCardView {
     UIImageView *imageView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"item-example" inBundle:nil compatibleWithTraitCollection:nil]];
-    imageView.translatesAutoresizingMaskIntoConstraints = false;
+    imageView.translatesAutoresizingMaskIntoConstraints = NO;
     
     NSArray *constraints = @[
         [imageView.heightAnchor constraintEqualToConstant:80],
@@ -167,8 +176,58 @@
     UIStackView *stackView = [[UIStackView alloc] initWithArrangedSubviews:@[imageView, textLbl]];
     stackView.axis = UILayoutConstraintAxisHorizontal;
     stackView.spacing = 30;
+    stackView.alignment = UIStackViewAlignmentTop;
     
     return stackView;
+}
+
+- (UIView *)buildCardViewWithButton {
+    UIImageView *imageView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"item-example" inBundle:nil compatibleWithTraitCollection:nil]];
+    imageView.translatesAutoresizingMaskIntoConstraints = false;
+    
+    NSArray *constraints = @[
+        [imageView.heightAnchor constraintEqualToConstant:80],
+        [imageView.widthAnchor constraintEqualToConstant:80],
+    ];
+    [NSLayoutConstraint activateConstraints: constraints];
+    
+    imageView.layer.cornerRadius = 40;
+    imageView.clipsToBounds = YES;
+    
+    UILabel *textLbl = [[UILabel alloc] init];
+    textLbl.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+    textLbl.numberOfLines = 0;
+    
+    AndesFontStyle * font = [[AndesFontStyle alloc] initWithTextColor:AndesStyleSheetManager.styleSheet.textColorPrimary
+                                                                 font:[AndesStyleSheetManager.styleSheet regularSystemFontWithSize:16]
+                                                          lineSpacing:1];
+    [textLbl setAndesStyleWithStyle:font];
+    
+    AndesButton *button = [[AndesButton alloc] initWithText:@"Button" hierarchy:AndesButtonHierarchyLoud size:AndesButtonSizeMedium icon:nil];
+    [button addTarget:self action:@selector(cardButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIStackView *verticalStackView = [[UIStackView alloc] initWithArrangedSubviews:@[textLbl, button]];
+    verticalStackView.axis = UILayoutConstraintAxisVertical;
+    verticalStackView.spacing = 10;
+    
+    UIStackView *stackView = [[UIStackView alloc] initWithArrangedSubviews:@[imageView, verticalStackView]];
+    stackView.axis = UILayoutConstraintAxisHorizontal;
+    stackView.spacing = 30;
+    stackView.alignment = UIStackViewAlignmentTop;
+    
+    return stackView;
+}
+
+- (void)cardButtonTapped {
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle: @"Button pressed"
+                                                                   message:@""
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:nil];
+
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)handleActionTap:(AndesCard*)card actionType:(NSString *)actionType {
