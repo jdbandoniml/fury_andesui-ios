@@ -10,6 +10,7 @@ use_frameworks!
 
 target 'AndesUI-demoapp' do
     pod 'AndesUI', :path => './'
+    pod 'AndesUI/AndesCoachmark', :path => './'
     pod 'IQKeyboardManagerSwift', '6.3.0'
 
     target 'AndesUI_Tests' do
