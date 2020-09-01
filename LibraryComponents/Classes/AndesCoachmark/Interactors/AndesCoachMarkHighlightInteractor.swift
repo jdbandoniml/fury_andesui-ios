@@ -45,7 +45,7 @@ class AndesCoachMarkHighlightInteractor {
         if rectConverted.maxX + margin > overlayView.bounds.width { rectConvertedCuttedWidth -= (margin + rectConverted.maxX - overlayView.bounds.width) }
 
         //Vertical excess
-        if !bodyViewBounds.contains(rectConverted.insetBy(dx: bodyViewBounds.minX, dy: -margin)) {
+        if !isContainedVertically(rectConverted.insetBy(dx: 0, dy: -margin), in: bodyViewBounds) {
             if rectConverted.isAbove(of: bodyViewBounds) {
                 return CGRect(x: rectConvertedCuttedX, y: bodyViewBounds.minY + margin, width: rectConvertedCuttedWidth, height: rectConverted.maxY - bodyViewBounds.minY - margin)
             } else {
