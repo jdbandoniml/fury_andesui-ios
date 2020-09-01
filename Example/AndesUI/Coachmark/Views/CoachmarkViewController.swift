@@ -34,7 +34,10 @@ class CoachmarkViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        coachmark?.start()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.coachmark?.start()
+        }
     }
 
     private func setupViews() {

@@ -5,12 +5,12 @@
 //  Created by JONATHAN DANIEL BANDONI on 24/04/2020.
 //
 
-public struct AndesCoachMarkEntity {
+@objc public class AndesCoachMarkEntity: NSObject {
     let steps: [AndesCoachMarkStepEntity]
     let scrollView: UIScrollView?
     let completionHandler: (() -> Void)?
 
-    public init(steps: [AndesCoachMarkStepEntity],
+    @objc public init(steps: [AndesCoachMarkStepEntity],
                 scrollView: UIScrollView?,
                 completionHandler: (() -> Void)?) {
 

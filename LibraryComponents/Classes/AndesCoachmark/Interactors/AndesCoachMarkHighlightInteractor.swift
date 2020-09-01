@@ -12,20 +12,20 @@ protocol AndesCoachMarkHighlightInteractorProtocol: class {
     func getHighlightCornerRadius() -> CGFloat
     func getMaskPath() -> CGPath
     func isHighlightedViewBelow() -> Bool
-    func update(view: UIView, style: AndesCoachMarkStepEntity.Style)
+    func update(view: UIView, style: AndesCoachMarkStepEntity.HighlightStyle)
 }
 
 class AndesCoachMarkHighlightInteractor {
 
     private var view: UIView
-    private var style: AndesCoachMarkStepEntity.Style
+    private var style: AndesCoachMarkStepEntity.HighlightStyle
     private let overlayView: UIView
     private let bodyViewBounds: CGRect
     private let margin: CGFloat
 
     private var highlightedRect: CGRect { highlightedRectCalculation() }
 
-    required init (overlayView: UIView, view: UIView, bodyViewBounds: CGRect, style: AndesCoachMarkStepEntity.Style, margin: CGFloat = AndesCoachMarkConstants.Highlight.margin) {
+    required init (overlayView: UIView, view: UIView, bodyViewBounds: CGRect, style: AndesCoachMarkStepEntity.HighlightStyle, margin: CGFloat = AndesCoachMarkConstants.Highlight.margin) {
         self.overlayView = overlayView
         self.view = view
         self.bodyViewBounds = bodyViewBounds
@@ -60,10 +60,10 @@ class AndesCoachMarkHighlightInteractor {
         if rect.minY < container.minY || rect.maxY > container.maxY {
             return false
         }
-        
+
         return true
     }
-    
+
     private func buildSquareFrom(rect: CGRect, margin: CGFloat) -> UIBezierPath {
         return UIBezierPath(roundedRect: rect.insetBy(dx: -margin, dy: -margin), cornerRadius: AndesCoachMarkConstants.Highlight.cornerRadius)
     }
@@ -75,7 +75,7 @@ class AndesCoachMarkHighlightInteractor {
 }
 
 extension AndesCoachMarkHighlightInteractor: AndesCoachMarkHighlightInteractorProtocol {
-    func update(view: UIView, style: AndesCoachMarkStepEntity.Style) {
+    func update(view: UIView, style: AndesCoachMarkStepEntity.HighlightStyle) {
         self.view = view
         self.style = style
     }

@@ -64,7 +64,7 @@ class AndesCoachMarkPresenter {
     private func setBody(_ position: AndesCoachMarkBodyEntity.Position, removePrevious: Bool) {
         guard let view = view, let currentStep = currentStep else { return }
         view.setBody(AndesCoachMarkBodyPresenter(model: AndesCoachMarkBodyEntity(title: currentStep.title,
-                                                                           description: currentStep.description,
+                                                                           description: currentStep.descriptionText,
                                                                            viewToPoint: currentStep.view,
                                                                            position: position)), removePrevious: removePrevious)
     }

@@ -5,26 +5,26 @@
 //  Created by JONATHAN DANIEL BANDONI on 04/06/2020.
 //
 
-public struct AndesCoachMarkStepEntity {
-    public enum Style {
+@objc public class AndesCoachMarkStepEntity: NSObject {
+    @objc public enum HighlightStyle: Int {
         case rectangle
         case circle
     }
 
     let title: String
-    let description: String
+    let descriptionText: String
     let view: UIView
-    let style: Style
+    let style: HighlightStyle
     let nextText: String
 
-    public init (title: String,
+    @objc public init (title: String,
                  description: String,
                  view: UIView,
-                 style: Style,
+                 style: HighlightStyle,
                  nextText: String) {
 
         self.title = title
-        self.description = description
+        self.descriptionText = description
         self.nextText = nextText
         self.view = view
         self.style = style

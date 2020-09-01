@@ -40,7 +40,7 @@ public class AndesCoachMarkView: UIView {
     var onExit: (() -> Void)?
 
     // MARK: - Initialization
-    public init(model: AndesCoachMarkEntity) {
+    @objc public init(model: AndesCoachMarkEntity) {
         self.onExit = model.completionHandler
         self.presenter = AndesCoachMarkPresenter(model: model)
 
@@ -100,7 +100,7 @@ public class AndesCoachMarkView: UIView {
         fatalError("This class does not support NSCoding")
     }
 
-    public func start() {
+    @objc public func start() {
         presenter.start()
     }
 

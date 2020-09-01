@@ -13,12 +13,13 @@ protocol CoachmarkRouter: NSObject {
 }
 
 class CoachmarkAppRouter: NSObject {
-    var view: CoachmarkViewController!
+    var view: AndesShowcasePageViewController!
 }
 
 extension CoachmarkAppRouter: CoachmarkRouter {
     func route(from: UIViewController) {
-        view = CoachmarkViewController()
+        view = AndesShowcasePageViewController(controllers: [CoachmarkViewController(), CoachmarkObjCViewController()])
+        view.title = "AndesCoachmark"
         from.navigationController?.pushViewController(view, animated: true)
     }
 }
