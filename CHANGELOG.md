@@ -1,6 +1,6 @@
 ## Unpublished
 ### 🚀 Features
-- New component: AndesCoachMark | Authors: [@jdbandoniml](https://github.com/mercadolibre/fury_andesui-ios)
+- New component: AndesCoachMark | Authors: [@jdbandoniml](https://github.com/jdbandoniml)
 ### 🛠 Bug fixes
 - AndesCard: The provided view now support tappable actions | Authors: [@Mobile-Arq](https://github.com/mercadolibre/fury_andesui-ios)
 
