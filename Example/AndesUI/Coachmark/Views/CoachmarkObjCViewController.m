@@ -26,7 +26,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [_coachmark start];
+    [self.coachmark start];
 }
 
 - (void)setupCoachmark {
