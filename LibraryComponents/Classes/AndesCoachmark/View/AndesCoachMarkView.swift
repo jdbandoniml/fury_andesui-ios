@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class AndesCoachMarkView: UIView {
+@objc public class AndesCoachMarkView: UIView {
     let overlayLayer = CAShapeLayer()
     let maskLayer = CAShapeLayer()
 

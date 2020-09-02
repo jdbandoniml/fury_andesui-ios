@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol AndesCoachMarkViewDelegate: class {
-    func onShowNext(stepIndex: Int)
-    func onClose(stepIndex: Int)
+@objc public protocol AndesCoachMarkViewDelegate: class {
+    @objc func onShowNext(stepIndex: Int)
+    @objc func onClose(stepIndex: Int)
 }
