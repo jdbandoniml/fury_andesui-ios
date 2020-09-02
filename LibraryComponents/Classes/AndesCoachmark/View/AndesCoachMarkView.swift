@@ -11,8 +11,8 @@ import UIKit
     let overlayLayer = CAShapeLayer()
     let maskLayer = CAShapeLayer()
 
-    public weak var delegate: AndesCoachMarkViewDelegate?
-    public let overlayColor: UIColor = UIColor.Andes.gray800
+    @objc public weak var delegate: AndesCoachMarkViewDelegate?
+    @objc public let overlayColor: UIColor = UIColor.Andes.gray800
 
     var highlightedView: AndesCoachMarkHighlightedView?
 
