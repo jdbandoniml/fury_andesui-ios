@@ -26,7 +26,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [_coachmark start];
+    [self.coachmark start];
 }
 
 - (void)setupCoachmark {
@@ -40,7 +40,7 @@
     
     AndesCoachMarkEntity *model = [[AndesCoachMarkEntity alloc] initWithSteps:@[upStep,leftStep,rightStep,downStep] scrollView:_scrollView completionHandler:NULL];
     
-    _coachmark = [[AndesCoachMarkView alloc] initWithModel:model];
+    self.coachmark = [[AndesCoachMarkView alloc] initWithModel:model];
 }
 
 
